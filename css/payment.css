@@ -1,0 +1,220 @@
+/* Import FontAwesome for Icons */
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css');
+
+body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(135deg, #1e3c72, #2a5298);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+/* Header and Navbar */
+header {
+  margin-bottom: -140px;
+  position: relative;
+  z-index: 10; /* Ensure the header stays above the video */
+  padding: 20px;
+}
+.social-icons {
+  display: flex;
+  gap: 15px; /* Space between icons */
+  justify-content: center; /* Center align */
+  margin-top: 20px;
+}
+
+
+
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px; /* Add padding for smaller screens */
+}
+
+/* Logo */
+.logo {
+  transition: transform 0.3s ease;
+  background-color: white;
+  border-radius: 100px;
+  width: 80px; /* Smaller logo for mobile */
+  height: 80px;
+}
+
+.logo:hover {
+  transform: scale(1.1); /* Slight zoom effect on hover */
+}
+
+/* Navigation Links */
+nav ul {
+  display: flex;
+  list-style: none;
+  gap: 40px; /* Reduced gap for smaller screens */
+}
+
+.nav-link {
+  text-decoration: none;
+  color: white;
+  font-size: 1rem; /* Smaller font size for mobile */
+  font-weight: 600; /* Adjusted font weight */
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  background: white;
+  bottom: -5px;
+  left: 0;
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover {
+  color: #ff6347;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+/* Language Switcher */
+.language-switcher {
+  display: flex;
+  gap: 10px;
+}
+
+.lang-btn {
+  background: transparent;
+  border: 2px solid white;
+  color: white;
+  padding: 5px 10px; /* Smaller padding for mobile */
+  font-size: 0.9rem; /* Smaller font size for mobile */
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 5px;
+}
+
+.lang-btn:hover {
+  background: white;
+  color: #000;
+  transform: translateY(-3px);
+}
+
+#payment {
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(15px);
+  padding: 90px;
+  border-radius: 20px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+  width: 90%;
+  max-width: 500px;
+  color: white;
+  margin: 200px auto 60px;
+}
+
+h2 {
+  text-align: center;
+  font-weight: 600;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+label {
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  outline: none;
+  font-size: 16px;
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  transition: 0.3s;
+}
+
+input:focus, textarea:focus {
+  background: rgba(255, 255, 255, 0.4);
+}
+
+button {
+  background: #ffcc00;
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+  text-transform: uppercase;
+  box-shadow: 0 5px 15px rgba(255, 204, 0, 0.4);
+}
+
+button:hover {
+  background: #ffdd44;
+}
+footer {
+  text-align: center;
+  padding: 20px;
+  background-color: transparent;
+  color: white;
+}
+
+.footer-icons {
+  margin-top: 10px;
+}
+
+.footer-icons a {
+  color: white;
+  font-size: 20px;
+  margin: 0 10px;
+  transition: 0.3s;
+}
+
+.footer-icons a:hover {
+  color: #ffcc00;
+}
+
+
+/* Icons */
+label::before {
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+}
+
+label[for='trip-name']::before { content: "\f5b0"; }
+label[for='num-persons']::before { content: "\f500"; }
+label[for='total-amount']::before { content: "\f53d"; }
+label[for='names']::before { content: "\f007"; }
+label[for='email']::before { content: "\f0e0"; }
+label[for='city']::before { content: "\f3c5"; }
+label[for='phone']::before { content: "\f879"; }
+
+/* Smooth Animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+#payment, form, input, textarea, button {
+  animation: fadeIn 0.5s ease-in-out;
+}

@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:font-size="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trip Planner - Home</title>
+  <link rel="stylesheet" href="/css/home.css">
+  <link rel="stylesheet" href="sccs/styles.scss">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Belanosima:wght@400;600;700&family=Rowdies:wght@300;400;700&family=Rubik+Doodle+Shadow&display=swap" rel="stylesheet">
+  <script defer src="/js/home.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
+  <script src="/js/trip-details.js"> </script>
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Belanosima:wght@400;600;700&family=Bonheur+Royale&family=Rowdies:wght@300;400;700&family=Rubik+Doodle+Shadow&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+  <link href="https://fonts.googleapis.com/css2?family=Almendra:ital,wght@0,400;0,700;1,400;1,700&family=Belanosima:wght@400;600;700&family=Bonheur+Royale&family=Frijole&family=Rowdies:wght@300;400;700&family=Rubik+Doodle+Shadow&display=swap" rel="stylesheet">
+</head>
+<body>
+<header>
+  <div class="navbar">
+    <!-- Logo -->
+    <img src="/img/logo.png" alt="Trip Planner Logo" class="logo" style="width: 100px; height: 100px">
+
+    <!-- Navigation Links -->
+    <nav>
+      <ul>
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="#featured-trips" class="nav-link">Trips</a></li>
+        <li><a href="about.html" class="nav-link">About Us</a></li>
+        <li><a href="contact.html" class="nav-link">Contact</a></li>
+      </ul>
+    </nav>
+
+    <!-- Language Switcher -->
+    <div class="language-switcher">
+      <button id="english-btn" class="lang-btn">EN</button>
+      <button id="dutch-btn" class="lang-btn">NL</button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <!-- Video Background -->
+    <video autoplay muted loop id="hero-video">
+      <source src="img/1409899-uhd_3840_2160_25fps.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+
+    <!-- Hero Content -->
+    <div class="hero-content">
+      <h2 class="hero-title">Discover Your Next Adventure</h2>
+      <p class="hero-subtitle">Explore amazing destinations around the world.</p>
+      <a href="trips.html" class="hero-btn">View Trips</a>
+      <div class="social-icons">
+        <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+        <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="title-section">
+    <div class="title-content">
+      <h2>Discover the Most <br><span>Attractive Places</span></h2>
+      <p>Explore breathtaking destinations and unforgettable experiences worldwide.</p>
+      <a href="#featured-trips" class="explore-btn">
+        <span>Explore</span>
+        <i class="fas fa-arrow-right"></i>
+      </a>
+    </div>
+    <div class="title-image">
+      <img src="img/newyork.jpeg" alt="Beautiful Travel Destination">
+    </div>
+  </section>
+
+
+  <section class="discover">
+
+    <div class="places-container">
+      <div class="place-card">
+        <img src="img/bali.jpg" alt="Bali">
+        <div class="overlay">
+          <h3>Bali</h3>
+          <p>24 tours available</p>
+        </div>
+      </div>
+      <div class="place-card big">
+        <img src="img/paris.jpg" alt="Hawaii">
+        <div class="overlay">
+          <h3>Hawaii</h3>
+          <p>15 tours available</p>
+        </div>
+      </div>
+      <div class="place-card">
+        <img src="img/newyork.jpeg" alt="Hvar">
+        <div class="overlay">
+          <h3>Hvar</h3>
+          <p>18 tours available</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    /* General Section Styling */
+    .discover {
+      text-align: center;
+      padding: 80px 10%;
+      background-color: #f5f5f5;
+    }
+
+    .section-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 40px;
+    }
+
+    /* Container */
+    .places-container {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    /* Place Card */
+    .place-card {
+      position: relative;
+      overflow: hidden;
+      border-radius: 15px;
+      flex: 1;
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .big {
+      flex: 1.2;
+    }
+
+    .place-card img {
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+      transition: transform 0.3s ease-in-out;
+    }
+
+    /* Hover Effect */
+    .place-card:hover img {
+      transform: scale(1.1);
+    }
+
+    /* Overlay */
+    .overlay {
+
+      font-size: 20px;
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      border-width: 20px;
+      background: rgba(0, 0, 0, 0.6);
+      padding: 15px 20px;
+      border-radius: 10px;
+    }
+
+    .overlay h3 {
+      color: white;
+      font-size: 17px;
+      margin: 0;
+    }
+
+    .overlay p {
+      color: #ffd700;
+      font-size: 10px;
+      margin-top: 5px;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .places-container {
+        flex-direction: column;
+      }
+
+      .place-card {
+        flex: 1;
+      }
+
+      .big {
+        flex: 1;
+      }
+    }
+  </style>
+
+
+
+
+  <section id="featured-trips">
+    <h2 class="section-title" style="font-family:Poppins, sans-serif;
+    font-size: 45px;
+    font-weight: bold;
+    color: #55723a;
+
+  -webkit-background-clip: text;">Featured Trips</h2>
+    <div class="trips-container">
+      <!-- Left Graphic Element -->
+      <div class="graphic-element left-graphic">
+        <img src="/img/212-2127349_tour-travel-png-vectors-tours-and-travels-png.png" alt="Decorative Graphic">
+      </div>
+
+      <!-- Trips Grid -->
+      <div class="trips-grid">
+        <div class="trip-card">
+          <div class="card-image">
+            <img src="/img/paris.jpg" alt="Paris">
+          </div>
+          <div class="card-content">
+            <h3>Paris Getaway</h3>
+            <p class="price">Price: From €500</p>
+            <a href="trip-detail.html?trip=paris" class="cta-button">Book Now</a>
+          </div>
+        </div>
+        <div class="trip-card">
+          <div class="card-image">
+            <img src="/img/rome.jpeg" alt="Rome">
+          </div>
+          <div class="card-content">
+            <h3>Rome Adventure</h3>
+            <p class="price">Price: €600</p>
+            <a href="trip-detail.html?trip=tokyo" class="cta-button">Learn More</a>
+          </div>
+        </div>
+        <div class="trip-card">
+          <div class="card-image">
+            <img src="/img/bali.jpg" alt="Bali">
+          </div>
+          <div class="card-content">
+            <h3>Bali Escape</h3>
+            <p class="price">Price: €700</p>
+            <a href="trip-detail.html?trip=bali" class="cta-button">Learn More</a>
+          </div>
+        </div>
+        <!-- Repeat for other cards -->
+      </div>
+
+      <!-- Right Graphic Element -->
+      <div class="graphic-element right-graphic">
+        <img src="/img/travel-by-the-train-vector-10096603-removebg-preview.png" alt="Decorative Graphic">
+      </div>
+    </div>
+  </section>
+
+  <section class="discover-section">
+    <div class="discover-image">
+      <img src="img/discover.jpeg" alt="Adventure Travel">
+    </div>
+    <div class="discover-content">
+      <h2>Discover the World<br><span>Expand Your Horizons!</span></h2>
+      <p>
+        Welcome to <strong>Step Out</strong> – Where adventure meets family.
+        <br><br>
+        At Step Out, we embrace a new and ambitious concept: creating travel adventures for young explorers, including families, friends, and anyone who wants to take a leap.
+        <br><br>
+        Our mission is to bring a breath of fresh air to the world of travel, where young and old can come together to explore, learn, and make unforgettable memories.
+      </p>
+      <a href="#explore-more" class="discover-btn">
+        <span>Start Your Journey</span>
+        <i class="fas fa-plane"></i>
+      </a>
+    </div>
+  </section>
+
+  <section class="travel-destinations">
+    <div class="titl-content">
+      <h2> Places We Are<br><span> Going to Visit! </h2>
+      <p>Explore the most exciting destinations worldwide.</p>
+      <img src="img/airplane.png" alt="Flying Airplane" class="airplane">
+    </div>
+
+    <div class="continents">
+      <div class="continent" style="background-image: url('img/europe.jpeg');">
+        <h3>Europe</h3>
+        <ul class="country-list">
+          <li>Paris</li>
+          <li>London</li>
+          <li>Rome</li>
+          <li>Cologne</li>
+          <li>Antwerp</li>
+        </ul>
+      </div>
+
+      <div class="continent" style="background-image: url('img/africz.jpg');">
+        <h3>Africa</h3>
+        <ul class="country-list">
+          <li>Morocco</li>
+          <li>Zanzibar</li>
+          <li>Algeria</li>
+          <li>Kenya</li>
+          <li>Mauritania</li>
+        </ul>
+      </div>
+
+      <div class="continent" style="background-image: url('img/middle east.jpeg');">
+        <h3>Middle East</h3>
+        <ul class="country-list">
+          <li>Egypt</li>
+          <li>Jordan</li>
+          <li>Saudi Arabia</li>
+          <li>Oman</li>
+          <li>Qatar</li>
+          <li>UAE</li>
+        </ul>
+      </div>
+
+      <div class="continent" style="background-image: url('img/south america.jpeg');">
+        <h3>South America</h3>
+        <ul class="country-list">
+          <li>Chile</li>
+          <li>Mexico</li>
+          <li>Brazil</li>
+          <li>Venezuela</li>
+          <li>Argentina</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+
+
+
+  <section class="why-choose-us">
+    <!-- Wavy Background Layers -->
+    <div class="wavy-background wavy-blue"></div>
+    <div class="wavy-background wavy-orange"></div>
+    <div class="wavy-background wavy-white"></div>
+
+    <!-- 3D Airplane Icon -->
+    <div class="airplane-icon">✈️</div>
+
+    <!-- Section Content -->
+    <h2 class="section-title" style="font-family:Poppins, sans-serif;
+    font-size: 45px;
+    font-weight: bold;
+    color: #55723a;
+
+  -webkit-background-clip: text;">Why Choose Us?</h2>
+    <div class="features-grid">
+      <div class="feature">
+        <div class="feature-icon">🗺️</div> <!-- Emoji or icon -->
+        <h3>Customizable Itineraries</h3>
+        <p>Plan your trips just the way you like them.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">📞</div> <!-- Emoji or icon -->
+        <h3>24/7 Support</h3>
+        <p>We're here to help you any time, anywhere.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">💸</div> <!-- Emoji or icon -->
+        <h3>Best Prices</h3>
+        <p>Get the best deals on all trips, guaranteed.</p>
+      </div>
+    </div>
+  </section>
+
+
+
+
+
+
+  <!-- Travel Quotes Section -->
+  <section style="width: 100%; max-width: 1000px; margin: 50px auto; text-align: center; padding: 40px;">
+    <h2 style="font-size: 36px; color: #333; margin-bottom: 20px;">Inspirational Travel Quotes</h2>
+
+    <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px;">
+      <!-- Quote 1 -->
+      <div style="width: 300px; padding: 20px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); background: #f9f9f9;">
+        <p style="font-size: 18px; font-style: italic; color: #555;">"The world is a book, and those who do not travel read only one page."</p>
+        <h4 style="margin-top: 10px; font-size: 16px; color: #333;">— Saint Augustine</h4>
+      </div>
+
+      <!-- Quote 2 -->
+      <div style="width: 300px; padding: 20px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); background: #f9f9f9;">
+        <p style="font-size: 18px; font-style: italic; color: #555;">"Traveling – it leaves you speechless, then turns you into a storyteller."</p>
+        <h4 style="margin-top: 10px; font-size: 16px; color: #333;">— Ibn Battuta</h4>
+      </div>
+
+      <!-- Quote 3 -->
+      <div style="width: 300px; padding: 20px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); background: #f9f9f9;">
+        <p style="font-size: 18px; font-style: italic; color: #555;">"Not all those who wander are lost."</p>
+        <h4 style="margin-top: 10px; font-size: 16px; color: #333;">— J.R.R. Tolkien</h4>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery Section -->
+  <section style="width: 100%; max-width: 900px; margin: 50px auto; text-align: center; padding: 40px; ">
+    <h2 style="font-size: 36px; color: #333;">Travel Memories</h2>
+    <p style="font-size: 18px; color: #555; margin-bottom: 20px;">Relive the beauty of our adventures.</p>
+
+    <div style="position: relative; width: 150%; height: 320px; overflow: hidden;">
+      <div id="image-slider" style="display: flex; gap: 20px; transition: transform 0.5s ease-in-out;">
+        <!-- Images (14 total) -->
+        <img src="/img/image00095.jpeg" class="gallery-image" style="width: 300px; height: 300px; object-fit: cover; border-radius: 10px;">
+        <img src="/img/image00100.jpeg" class="gallery-image" style="width: 300px; height: 300px; object-fit: cover; border-radius: 10px;">
+        <img src="/img/image00015.jpeg" class="gallery-image active" style="width: 300px; height: 300px; object-fit: cover; border-radius: 10px;">
+        <img src="/img/image00023.jpeg" class="gallery-image" style="width: 300px; height: 300px; object-fit: cover; border-radius: 10px;">
+        <img src="img/image00019.jpeg" class="gallery-image" style="width: 300px; height: 300px; object-fit: cover; border-radius: 10px;">
+        <img src="img/image00020.jpeg" class="gallery-image" style="width: 300px; height: 300px; object-fit: cover; border-radius: 10px;">
+        <img src="img/image00018.jpeg" class="gallery-image" style="width: 300px; height: 300px; object-fit: cover; border-radius: 10px;">
+        <img src="img/image00017.jpeg" class="gallery-image" style="width: 300px; height: 300px; object-fit: cover; border-radius: 10px;">
+        <img src="img/image00016.jpeg" class="gallery-image" style="width: 300px; height: 300px; object-fit: cover; border-radius: 10px;">
+        <img src="img/image00102.jpeg" class="gallery-image" style="width: 300px; height: 300px; object-fit: cover; border-radius: 10px;">
+        <img src="img/image00002.jpeg" class="gallery-image" style="width: 300px; height: 300px; object-fit: cover; border-radius: 10px;">
+        <video src="/img/f66cc38fc2c040cfb13551a7be19d42c.mov" class="gallery-image" style="width: 300px; height: 300px; object-fit: cover; border-radius: 10px;">
+        <img src="img/image00182.jpeg" class="gallery-image" style="width: 300px; height: 300px; object-fit: cover; border-radius: 10px;">
+        <img src="img/image00107.jpeg" class="gallery-image" style="width: 300px; height: 300px; object-fit: cover; border-radius: 10px;">
+      </div>
+    </div>
+  </section>
+
+  <!-- JavaScript for Auto Sliding Effect -->
+  <script>
+    let currentIndex = 2; // Start with the third image in focus
+    const images = document.querySelectorAll(".gallery-image");
+    const slider = document.getElementById("image-slider");
+
+    function updateGallery() {
+      // Move slider to show 3 images at a time
+      let offset = currentIndex * -320; // 300px image + 20px gap
+      slider.style.transform = `translateX(${offset}px)`;
+
+      // Apply blur effect
+      images.forEach((img, index) => {
+        if (index === currentIndex) {
+          img.style.filter = "none"; // Middle image clear
+        } else {
+          img.style.filter = "blur(0px)"; // Side images blurred
+        }
+      });
+
+      // Move to the next image
+      currentIndex++;
+      if (currentIndex >= images.length - 2) {
+        currentIndex = 2; // Reset when reaching the end
+      }
+    }
+
+    setInterval(updateGallery, 3000); // Slide every 3 seconds
+  </script>
+
+
+  <!-- Customer Testimonials Section -->
+  <div style="width: 100%; max-width: 900px; margin: 50px auto; text-align: center; padding: 20px;">
+    <h2 style="color: #333; font-size: 28px; margin-bottom: 20px;">What Our Customers Say</h2>
+
+    <div style="position: relative; overflow: hidden;">
+      <div id="testimonial-slider" style="display: flex; transition: transform 0.5s ease-in-out;">
+        <div class="testimonial" style="min-width: 100%; padding: 20px; background: #fff; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+          <p style="font-size: 18px; color: #555;">"Booking was seamless! The experience was top-notch, and everything was perfectly organized."</p>
+          <h4 style="margin-top: 10px; color: #333;">— Sarah Williams</h4>
+        </div>
+        <div class="testimonial" style="min-width: 100%; padding: 20px; background: #fff; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+          <p style="font-size: 18px; color: #555;">"The best travel experience I’ve ever had! Easy booking and fantastic customer service!"</p>
+          <h4 style="margin-top: 10px; color: #333;">— James Anderson</h4>
+        </div>
+        <div class="testimonial" style="min-width: 100%; padding: 20px; background: #fff; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+          <p style="font-size: 18px; color: #555;">"Highly recommend! Everything was smooth, and I had an amazing trip!"</p>
+          <h4 style="margin-top: 10px; color: #333;">— Emily Johnson</h4>
+        </div>
+      </div>
+    </div>
+
+    <!-- Navigation Buttons -->
+    <button onclick="prevTestimonial()" style="margin: 15px; padding: 8px 15px; border: none; background: #007BFF; color: white; border-radius: 5px; cursor: pointer;">&#10094; Prev</button>
+    <button onclick="nextTestimonial()" style="margin: 15px; padding: 8px 15px; border: none; background: #007BFF; color: white; border-radius: 5px; cursor: pointer;">Next &#10095;</button>
+  </div>
+
+  <!-- JavaScript for Slider -->
+  <script>
+    let index = 0;
+    function showTestimonial() {
+      const slider = document.getElementById("testimonial-slider");
+      const testimonials = document.querySelectorAll(".testimonial");
+      if (index >= testimonials.length) index = 0;
+      if (index < 0) index = testimonials.length - 1;
+      slider.style.transform = `translateX(${-index * 100}%)`;
+    }
+    function nextTestimonial() {
+      index++;
+      showTestimonial();
+    }
+    function prevTestimonial() {
+      index--;
+      showTestimonial();
+    }
+  </script>
+  <!-- Statistics Section with Rotating Globe -->
+  <section style="position: relative; width: 100%; height: 500px; text-align: center; overflow: hidden; display: flex; align-items: center; justify-content: center; color: black;">
+
+    <!-- Rotating Earth Background -->
+    <div style="position: absolute; width: 100%; height: 100%; overflow: hidden; z-index: -1;">
+      <video autoplay loop muted playsinline style="width: 100%; height: 100%; object-fit: cover; opacity: 0.3;">
+        <source src="img/3125396-uhd_3840_2160_25fps.mp4" type="video/mp4">
+      </video>
+    </div>
+
+    <div style="position: relative; z-index: 2; padding: 20px;">
+      <h2 style="font-size: 36px; margin-bottom: 20px;">Explore the World in Numbers</h2>
+      <p style="font-size: 18px; margin-bottom: 30px;">Discover the vastness of our planet.</p>
+
+      <div style="display: flex; justify-content: center; gap: 40px; flex-wrap: wrap;">
+        <!-- Continents -->
+        <div style="width: 200px; padding: 20px; border-radius: 10px; background: rgba(0,0,0,0.6); box-shadow: 0 4px 10px rgba(0,0,0,0.2);">
+          <h2 style="font-size: 40px; color: #FFD700;" class="counter" data-target="7">0</h2>
+          <p style="font-size: 18px;">Continents</p>
+        </div>
+
+        <!-- Land -->
+        <div style="width: 200px; padding: 20px; border-radius: 10px; background: rgba(0,0,0,0.6); box-shadow: 0 4px 10px rgba(0,0,0,0.2);">
+          <h2 style="font-size: 40px; color: #00FF7F;" class="counter" data-target="102">0</h2>
+          <p style="font-size: 18px;">Land</p>
+        </div>
+
+        <!-- Oceans -->
+        <div style="width: 200px; padding: 20px; border-radius: 10px; background: rgba(0,0,0,0.6); box-shadow: 0 4px 10px rgba(0,0,0,0.2);">
+          <h2 style="font-size: 40px; color: #00BFFF;" class="counter" data-target="5">0</h2>
+          <p style="font-size: 18px;">Oceans</p>
+        </div>
+
+        <!-- Cities -->
+        <div style="width: 200px; padding: 20px; border-radius: 10px; background: rgba(0,0,0,0.6); box-shadow: 0 4px 10px rgba(0,0,0,0.2);">
+          <h2 style="font-size: 40px; color: #FF4500;" class="counter" data-target="1752">0</h2>
+          <p style="font-size: 18px;">Cities</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- JavaScript for Counting Animation -->
+  <script>
+    function animateCounters() {
+      const counters = document.querySelectorAll(".counter");
+      const speed = 100; // Adjust speed for animation
+
+      counters.forEach(counter => {
+        const target = +counter.getAttribute("data-target");
+        let count = 0;
+        const increment = target / speed;
+
+        function updateCount() {
+          if (count < target) {
+            count += increment;
+            counter.innerText = Math.floor(count);
+            requestAnimationFrame(updateCount);
+          } else {
+            counter.innerText = target;
+          }
+        }
+
+        updateCount();
+      });
+    }
+
+    // Trigger animation when section is in view
+    function handleScroll() {
+      const section = document.querySelector("section");
+      const sectionPosition = section.getBoundingClientRect().top;
+      const screenPosition = window.innerHeight / 1.2;
+
+      if (sectionPosition < screenPosition) {
+        animateCounters();
+        window.removeEventListener("scroll", handleScroll);
+      }
+    }
+
+    window.addEventListener("scroll", handleScroll);
+  </script>
+
+
+
+
+
+
+</main>
+
+<footer>
+  <div class="row">
+    <div class="col">
+      <img src="/img/logo.png" class="footer_logo" alt="Footer Logo">
+      <p class="footer_about" style="color: black">Discover the best moments captured through the lens. We bring you high-quality visuals for every occasion, helping you tell your story effortlessly.
+      </p>
+    </div>
+    <div class="col">
+      <h3>Office <div class="bottom_line"><span></span></div></h3>
+      <p>2841 Romines Mill Road</p>
+      <p>Plano</p>
+      <p>Texas, ZIP 75074, United States</p>
+      <p class="footer_email">info@stepouttravels.be </p>
+      <h4>+32 472 96 61 00</h4>
+    </div>
+    <div class="col">
+      <h3>Links <div class="bottom_line" style="color: #f66335;"><span></span></div></h3>
+      <ul>
+        <li><a href="" style="color: #f66335;">HOME</a></li>
+        <li><a href="" style="color: #f66335">ABOUT</a></li>
+        <li><a href="" style="color: #f66335">SERVICE</a></li>
+        <li><a href="" style="color: #f66335">CONTACT US</a></li>
+      </ul>
+    </div>
+    <div class="col">
+      <h3>Newsletter <div class="bottom_line"><span></span></div></h3>
+      <form>
+        <ion-icon class="icon" name="mail"></ion-icon>
+        <input type="email" placeholder="Enter your email" required>
+        <button type="submit"><ion-icon class="icon_right" name="arrow-round-forward"></ion-icon></button>
+      </form>
+      <div class="social_icons">
+        <ion-icon class="social_icon" name="logo-facebook"></ion-icon>
+        <ion-icon class="social_icon" name="logo-whatsapp"></ion-icon>
+        <ion-icon class="social_icon" name="logo-twitter"></ion-icon>
+        <ion-icon class="social_icon" name="logo-instagram"></ion-icon>
+      </div>
+    </div>
+  </div>
+  <hr>
+  <p class="copyright">StepOut Travel Ⓒ 2025 - All Rights Reserved</p>
+</footer>
+
+</body>
+</html>

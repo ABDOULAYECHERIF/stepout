@@ -1,0 +1,949 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wheelie - Car Care at Your Doorstep</title>
+  <style>
+    /* Base Styles */
+    :root {
+      --primary: #2a5bd7;
+      --secondary: #ff7e33;
+      --dark: #1a1a1a;
+      --light: #f8f9fa;
+      --gray: #6c757d;
+      --success: #28a745;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      line-height: 1.6;
+      color: var(--dark);
+      background-color: var(--light);
+      overflow-x: hidden;
+    }
+
+    a {
+      text-decoration: none;
+      color: var(--primary);
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 24px;
+      border-radius: 50px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-align: center;
+      border: none;
+    }
+
+    .btn-primary {
+      background-color: var(--primary);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background-color: #1e4bbb;
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+      background-color: var(--secondary);
+      color: white;
+    }
+
+    .btn-secondary:hover {
+      background-color: #e66b2a;
+      transform: translateY(-2px);
+    }
+
+    .btn-outline {
+      background-color: transparent;
+      border: 2px solid var(--primary);
+      color: var(--primary);
+    }
+
+    .btn-outline:hover {
+      background-color: var(--primary);
+      color: white;
+    }
+
+    section {
+      padding: 60px 0;
+    }
+
+    .section-title {
+      font-size: 2.5rem;
+      margin-bottom: 1.5rem;
+      text-align: center;
+      color: var(--dark);
+    }
+
+    .section-subtitle {
+      font-size: 1.2rem;
+      color: var(--gray);
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto 40px;
+    }
+
+    /* Header */
+    header {
+      background-color: white;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      position: fixed;
+      width: 100%;
+      z-index: 1000;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 0;
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    .logo span {
+      color: var(--secondary);
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+    }
+
+    .nav-links li {
+      margin-left: 30px;
+    }
+
+    .nav-links a {
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--secondary);
+    }
+
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: var(--dark);
+    }
+
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1502877338535-766e1452684a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+      background-size: cover;
+      background-position: center;
+      color: white;
+      text-align: center;
+      padding: 180px 0 100px;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      max-width: 700px;
+      margin: 0 auto 40px;
+    }
+
+    .hero-btns {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    /* How It Works */
+    .steps {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      margin-top: 40px;
+    }
+
+    .step {
+      flex: 1;
+      min-width: 250px;
+      text-align: center;
+      padding: 0 20px;
+      margin-bottom: 30px;
+    }
+
+    .step-icon {
+      width: 100px;
+      height: 100px;
+      background-color: var(--primary);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+      color: white;
+      font-size: 2.5rem;
+    }
+
+    .step h3 {
+      font-size: 1.5rem;
+      margin-bottom: 15px;
+    }
+
+    /* Services */
+    .services {
+      background-color: #f1f5ff;
+    }
+
+    .service-cards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      justify-content: center;
+    }
+
+    .service-card {
+      background-color: white;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      width: 350px;
+      transition: transform 0.3s ease;
+    }
+
+    .service-card:hover {
+      transform: translateY(-10px);
+    }
+
+    .service-img {
+      height: 200px;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .service-content {
+      padding: 25px;
+    }
+
+    .service-content h3 {
+      font-size: 1.5rem;
+      margin-bottom: 15px;
+      color: var(--primary);
+    }
+
+    .service-content ul {
+      list-style-position: inside;
+      margin-bottom: 20px;
+    }
+
+    .service-content li {
+      margin-bottom: 8px;
+    }
+
+    .price {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--secondary);
+      margin: 20px 0;
+    }
+
+    /* Technician CTA */
+    .technician-cta {
+      background: linear-gradient(rgba(42, 91, 215, 0.9), rgba(42, 91, 215, 0.9)), url('https://images.unsplash.com/photo-1581094271901-8022df4466f9?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+      background-size: cover;
+      background-position: center;
+      color: white;
+      text-align: center;
+      padding: 80px 20px;
+    }
+
+    .technician-cta h2 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+    }
+
+    .technician-cta p {
+      font-size: 1.2rem;
+      max-width: 700px;
+      margin: 0 auto 40px;
+    }
+
+    /* Testimonials */
+    .testimonials {
+      text-align: center;
+    }
+
+    .testimonial-cards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      justify-content: center;
+      margin-top: 40px;
+    }
+
+    .testimonial-card {
+      background-color: white;
+      border-radius: 10px;
+      padding: 30px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      width: 350px;
+      position: relative;
+    }
+
+    .testimonial-card:before {
+      content: '"';
+      font-size: 5rem;
+      color: rgba(42, 91, 215, 0.1);
+      position: absolute;
+      top: 10px;
+      left: 20px;
+    }
+
+    .testimonial-text {
+      font-style: italic;
+      margin-bottom: 20px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .author-img {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background-size: cover;
+      background-position: center;
+      margin-right: 15px;
+    }
+
+    .author-info h4 {
+      font-size: 1.1rem;
+      margin-bottom: 5px;
+    }
+
+    .author-info p {
+      color: var(--gray);
+      font-size: 0.9rem;
+    }
+
+    /* Waitlist */
+    .waitlist {
+      background-color: var(--primary);
+      color: white;
+      text-align: center;
+      padding: 80px 20px;
+    }
+
+    .waitlist h2 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+    }
+
+    .waitlist p {
+      font-size: 1.2rem;
+      max-width: 700px;
+      margin: 0 auto 40px;
+    }
+
+    .waitlist-form {
+      max-width: 500px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      justify-content: center;
+    }
+
+    .waitlist-form input {
+      flex: 1;
+      min-width: 250px;
+      padding: 15px;
+      border-radius: 50px;
+      border: none;
+      font-size: 1rem;
+    }
+
+    .waitlist-form button {
+      padding: 15px 30px;
+    }
+
+    /* Footer */
+    footer {
+      background-color: var(--dark);
+      color: white;
+      padding: 60px 0 20px;
+    }
+
+    .footer-content {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 50px;
+      margin-bottom: 40px;
+    }
+
+    .footer-column {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .footer-column h3 {
+      font-size: 1.3rem;
+      margin-bottom: 20px;
+      color: var(--secondary);
+    }
+
+    .footer-column ul {
+      list-style: none;
+    }
+
+    .footer-column li {
+      margin-bottom: 10px;
+    }
+
+    .footer-column a {
+      color: #adb5bd;
+      transition: color 0.3s ease;
+    }
+
+    .footer-column a:hover {
+      color: white;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .social-links a {
+      display: inline-block;
+      width: 40px;
+      height: 40px;
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+    }
+
+    .social-links a:hover {
+      background-color: var(--secondary);
+      transform: translateY(-3px);
+    }
+
+    .copyright {
+      text-align: center;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      color: #adb5bd;
+      font-size: 0.9rem;
+    }
+
+    /* Mobile Menu */
+    .mobile-menu {
+      position: fixed;
+      top: 0;
+      left: -100%;
+      width: 80%;
+      max-width: 300px;
+      height: 100vh;
+      background-color: white;
+      box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+      z-index: 1001;
+      transition: left 0.3s ease;
+      padding: 30px;
+    }
+
+    .mobile-menu.active {
+      left: 0;
+    }
+
+    .mobile-menu-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 30px;
+    }
+
+    .mobile-menu-links {
+      list-style: none;
+    }
+
+    .mobile-menu-links li {
+      margin-bottom: 20px;
+    }
+
+    .mobile-menu-links a {
+      font-size: 1.2rem;
+      font-weight: 500;
+    }
+
+    .close-menu-btn {
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: var(--dark);
+    }
+
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 1000;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+
+    .overlay.active {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 992px) {
+      .section-title {
+        font-size: 2rem;
+      }
+
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+
+      .step {
+        min-width: 200px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+
+      .mobile-menu-btn {
+        display: block;
+      }
+
+      .hero {
+        padding: 150px 0 80px;
+      }
+
+      .hero h1 {
+        font-size: 2rem;
+      }
+
+      .hero p {
+        font-size: 1rem;
+      }
+
+      .hero-btns {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .btn {
+        width: 100%;
+        max-width: 300px;
+        margin-bottom: 15px;
+      }
+
+      .steps {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .step {
+        max-width: 300px;
+      }
+
+      .waitlist-form {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .waitlist-form input,
+      .waitlist-form button {
+        width: 100%;
+        max-width: 300px;
+      }
+    }
+
+    @media (max-width: 576px) {
+      section {
+        padding: 40px 0;
+      }
+
+      .section-title {
+        font-size: 1.8rem;
+      }
+
+      .service-card,
+      .testimonial-card {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+<!-- Header -->
+<header>
+  <div class="container">
+    <nav class="navbar">
+      <a href="#" class="logo">Wheelie<span>.</span></a>
+      <ul class="nav-links">
+        <li><a href="#services">Services</a></li>
+        <li><a href="#how-it-works">How It Works</a></li>
+        <li><a href="#technicians">For Technicians</a></li>
+        <li><a href="#testimonials">Testimonials</a></li>
+      </ul>
+      <button class="mobile-menu-btn">☰</button>
+    </nav>
+  </div>
+</header>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobileMenu">
+  <div class="mobile-menu-header">
+    <a href="#" class="logo">Wheelie<span>.</span></a>
+    <button class="close-menu-btn" id="closeMenuBtn">×</button>
+  </div>
+  <ul class="mobile-menu-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#how-it-works">How It Works</a></li>
+    <li><a href="#technicians">For Technicians</a></li>
+    <li><a href="#testimonials">Testimonials</a></li>
+    <li><a href="#waitlist" class="btn btn-secondary" style="margin-top: 20px; display: inline-block;">Join Waitlist</a></li>
+  </ul>
+</div>
+<div class="overlay" id="overlay"></div>
+
+<!-- Hero Section -->
+<section class="hero">
+  <div class="container">
+    <h1>Car Care at Your Doorstep</h1>
+    <p>Skip the garage. Certified mechanics come to you for washes, repairs, and more. Book in 60 seconds!</p>
+    <div class="hero-btns">
+      <a href="#waitlist" class="btn btn-primary">Book a Service</a>
+      <a href="#technicians" class="btn btn-outline">Become a Technician</a>
+    </div>
+  </div>
+</section>
+
+<!-- How It Works -->
+<section id="how-it-works">
+  <div class="container">
+    <h2 class="section-title">How Wheelie Works</h2>
+    <p class="section-subtitle">Get professional auto care without leaving your home or office</p>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-icon">1</div>
+        <h3>Book Your Service</h3>
+        <p>Select your service, location, and preferred time through our app or website.</p>
+      </div>
+      <div class="step">
+        <div class="step-icon">2</div>
+        <h3>Technician Arrives</h3>
+        <p>A certified professional comes to you with all necessary tools and equipment.</p>
+      </div>
+      <div class="step">
+        <div class="step-icon">3</div>
+        <h3>Relax While We Work</h3>
+        <p>Track progress in real-time. Pay securely when the job is done to your satisfaction.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Services -->
+<section class="services" id="services">
+  <div class="container">
+    <h2 class="section-title">Our Services</h2>
+    <p class="section-subtitle">Professional auto care delivered to your doorstep</p>
+
+    <div class="service-cards">
+      <div class="service-card">
+        <div class="service-img" style="background-image: url('https://images.unsplash.com/photo-1600679472829-3044539ce8ed?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+        <div class="service-content">
+          <h3>Premium Car Wash</h3>
+          <ul>
+            <li>Hand wash and dry</li>
+            <li>Interior vacuum and wipe-down</li>
+            <li>Window cleaning</li>
+            <li>Tire shine</li>
+            <li>Wax finish</li>
+          </ul>
+          <div class="price">From $39.99</div>
+          <a href="#waitlist" class="btn btn-primary">Book Now</a>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-img" style="background-image: url('https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+        <div class="service-content">
+          <h3>Mobile Repairs</h3>
+          <ul>
+            <li>Oil and filter change</li>
+            <li>Tire rotation</li>
+            <li>Battery replacement</li>
+            <li>Brake pad inspection</li>
+            <li>Light diagnostics</li>
+          </ul>
+          <div class="price">From $59.99</div>
+          <a href="#waitlist" class="btn btn-primary">Book Now</a>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-img" style="background-image: url('https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+        <div class="service-content">
+          <h3>Pickup & Delivery</h3>
+          <ul>
+            <li>We pick up your car for major repairs</li>
+            <li>Deliver to trusted partner garages</li>
+            <li>Return washed and detailed</li>
+            <li>Optional key locker service</li>
+            <li>24/7 tracking</li>
+          </ul>
+          <div class="price">From $19.99</div>
+          <a href="#waitlist" class="btn btn-primary">Book Now</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Technician CTA -->
+<section class="technician-cta" id="technicians">
+  <div class="container">
+    <h2>Earn $1,500+/Month On Your Schedule</h2>
+    <p>Join Wheelie as a certified technician and keep 80% of your earnings. Flexible hours, tools provided, and steady work in your area.</p>
+    <a href="#technician-form" class="btn btn-secondary">Apply Now</a>
+  </div>
+</section>
+
+<!-- Testimonials -->
+<section class="testimonials" id="testimonials">
+  <div class="container">
+    <h2 class="section-title">What Our Customers Say</h2>
+    <p class="section-subtitle">Don't just take our word for it</p>
+
+    <div class="testimonial-cards">
+      <div class="testimonial-card">
+        <p class="testimonial-text">Saved me 2 hours of waiting at the garage. The technician came to my office and changed my oil while I worked. Incredible service!</p>
+        <div class="testimonial-author">
+          <div class="author-img" style="background-image: url('https://randomuser.me/api/portraits/women/44.jpg');"></div>
+          <div class="author-info">
+            <h4>Sarah Johnson</h4>
+            <p>Marketing Director</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <p class="testimonial-text">As a single mom with two kids, going to the car wash was a nightmare. Wheelie comes to my house while the kids are at school. Lifesaver!</p>
+        <div class="testimonial-author">
+          <div class="author-img" style="background-image: url('https://randomuser.me/api/portraits/women/68.jpg');"></div>
+          <div class="author-info">
+            <h4>Michelle Rodriguez</h4>
+            <p>Elementary Teacher</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <p class="testimonial-text">I make $3K/month working weekends only with Wheelie. The app makes it easy to find jobs near me and the pay is better than the shop I worked at.</p>
+        <div class="testimonial-author">
+          <div class="author-img" style="background-image: url('https://randomuser.me/api/portraits/men/32.jpg');"></div>
+          <div class="author-info">
+            <h4>Mike Thompson</h4>
+            <p>Wheelie Technician</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Waitlist -->
+<section class="waitlist" id="waitlist">
+  <div class="container">
+    <h2>Coming Soon to Your City!</h2>
+    <p>Join our waitlist to get 50% off your first service when we launch in your area.</p>
+
+    <form class="waitlist-form" id="waitlistForm">
+      <input type="text" placeholder="Your Name" required>
+      <input type="email" placeholder="Email Address" required>
+      <input type="text" placeholder="ZIP Code" required>
+      <button type="submit" class="btn btn-secondary">Join Waitlist</button>
+    </form>
+
+    <p style="margin-top: 20px; font-size: 0.9rem;">1,200+ people already joined</p>
+  </div>
+</section>
+
+<!-- Technician Form (Hidden until clicked) -->
+<div id="technician-form" style="display: none;">
+  <!-- You would implement a similar form structure here -->
+</div>
+
+<!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-column">
+        <h3>Wheelie</h3>
+        <p>On-demand auto care delivered to your doorstep. Wash, fix, and maintain your car without the hassle.</p>
+        <div class="social-links">
+          <a href="#"><i>f</i></a>
+          <a href="#"><i>in</i></a>
+          <a href="#"><i>ig</i></a>
+          <a href="#"><i>t</i></a>
+        </div>
+      </div>
+
+      <div class="footer-column">
+        <h3>Services</h3>
+        <ul>
+          <li><a href="#">Car Wash</a></li>
+          <li><a href="#">Mobile Repairs</a></li>
+          <li><a href="#">Pickup & Delivery</a></li>
+          <li><a href="#">Emergency Services</a></li>
+          <li><a href="#">Fleet Solutions</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h3>Company</h3>
+        <ul>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">Press</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h3>Support</h3>
+        <ul>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Safety</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Service</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="copyright">
+      <p>&copy; 2023 Wheelie. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Mobile Menu Toggle
+  const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+  const closeMenuBtn = document.querySelector('#closeMenuBtn');
+  const mobileMenu = document.querySelector('#mobileMenu');
+  const overlay = document.querySelector('#overlay');
+
+  mobileMenuBtn.addEventListener('click', () => {
+    mobileMenu.classList.add('active');
+    overlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  });
+
+  closeMenuBtn.addEventListener('click', () => {
+    mobileMenu.classList.remove('active');
+    overlay.classList.remove('active');
+    document.body.style.overflow = '';
+  });
+
+  overlay.addEventListener('click', () => {
+    mobileMenu.classList.remove('active');
+    overlay.classList.remove('active');
+    document.body.style.overflow = '';
+  });
+
+  // Smooth scrolling for anchor links
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      e.preventDefault();
+
+      mobileMenu.classList.remove('active');
+      overlay.classList.remove('active');
+      document.body.style.overflow = '';
+
+      const targetId = this.getAttribute('href');
+      if (targetId === '#') return;
+
+      const targetElement = document.querySelector(targetId);
+      if (targetElement) {
+        window.scrollTo({
+          top: targetElement.offsetTop - 80,
+          behavior: 'smooth'
+        });
+      }
+    });
+  });
+
+  // Waitlist Form Submission
+  const waitlistForm = document.querySelector('#waitlistForm');
+  if (waitlistForm) {
+    waitlistForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      alert('Thanks for joining our waitlist! We\'ll notify you when Wheelie launches in your area.');
+      waitlistForm.reset();
+    });
+  }
+
+  // Show technician form when "Apply Now" is clicked
+  const technicianLinks = document.querySelectorAll('a[href="#technician-form"]');
+  technicianLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      alert('Technician application will open in a new window.');
+      // In a real implementation, you would show a modal or redirect to a form page
+    });
+  });
+</script>
+</body>
+</html>

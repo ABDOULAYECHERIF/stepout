@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trip Detail - Trip Planner</title>
+  <link rel="stylesheet" href="css/trip-detail.css"> <!-- Link to the dedicated CSS file -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script src="https://kit.fontawesome.com/YOUR_KIT_CODE.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+
+
+
+
+</head>
+<body>
+<header>
+  <div class="navbar">
+    <!-- Logo -->
+    <img src="/img/logo.png" alt="Trip Planner Logo" class="logo" style="width: 100px; height: 100px">
+
+    <!-- Navigation Links -->
+    <nav>
+      <ul>
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="trips.html" class="nav-link">Trips</a></li>
+        <li><a href="about.html" class="nav-link">About Us</a></li>
+        <li><a href="contact.html" class="nav-link">Contact</a></li>
+      </ul>
+    </nav>
+
+    <!-- Language Switcher -->
+    <div class="language-switcher">
+      <button id="english-btn" class="lang-btn">EN</button>
+      <button id="dutch-btn" class="lang-btn">NL</button>
+    </div>
+  </div>
+</header>
+
+
+<!-- Hero Section -->
+<section id="hero">
+  <div class="hero-slider">
+    <!-- Slide 1 -->
+    <div class="slide" style="background-image: url('img/slider1.jpeg');">
+
+      <div class="slide-content">
+        <h2 class="slide-title">Explore the World</h2>
+        <p class="slide-description">Discover the most breathtaking destinations on Earth.</p>
+        <a href="#booking" class="cta-button">Book Now</a>
+      </div>
+    </div>
+    <!-- Slide 2 -->
+    <div class="slide" style="background-image: url('img/slider2.jpeg');">
+      <div class="slide-content">
+        <h2 class="slide-title">Adventure Awaits</h2>
+        <p class="slide-description">Embark on thrilling journeys and create unforgettable memories.</p>
+        <a href="#booking" class="cta-button">Book Now</a>
+      </div>
+
+    </div>
+    <!-- Slide 3 -->
+    <div class="slide" style="background-image: url('img/slider3.jpeg');">
+      <div class="slide-content">
+        <h2 class="slide-title">Luxury Escapes</h2>
+        <div class="social-icons">
+          <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+          <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+          <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+        <p class="slide-description">Indulge in the finest accommodations and experiences.</p>
+        <a href="#booking" class="cta-button" ><span>Start Your Journey</span>
+          <i class="fas fa-plane"></i></a>
+      </div>
+    </div>
+    <!-- Slide 4 -->
+    <div class="slide" style="background-image: url('img/slider4.jpeg');">
+      <div class="slide-content">
+        <h2 class="slide-title">Cultural Immersion</h2>
+        <p class="slide-description">Immerse yourself in the rich cultures and traditions of the world.</p>
+        <a href="#booking" class="cta-button">Book Now</a>
+      </div>
+    </div>
+  </div>
+</section>
+<script>
+  // Hero Slider
+  const slides = document.querySelectorAll('.slide');
+  let currentSlide = 0;
+
+  function showSlide(index) {
+    slides.forEach((slide, i) => {
+      slide.classList.remove('active');
+      if (i === index) {
+        slide.classList.add('active');
+      }
+    });
+  }
+
+  function nextSlide() {
+    currentSlide = (currentSlide + 1) % slides.length;
+    showSlide(currentSlide);
+  }
+
+  // Change slide every 5 seconds
+  setInterval(nextSlide, 5000);
+
+  // Initialize the first slide
+  showSlide(currentSlide);
+
+</script>
+<section id="trip-detail">
+  <div class="trip-container">
+    <h2 id="trip-title">Trip Title</h2>
+    <img id="trip-image" src="" alt="Trip Image">
+    <p id="trip-description">Trip description goes here.</p>
+
+    <!-- Add duration and price here -->
+    <div class="trip-info">
+      <div class="info-item">
+        <span class="info-label">Duration:</span>
+        <span id="trip-duration" class="info-value">N/A</span>
+      </div>
+      <div id="trip-rating" class="star-rating">
+        Rating
+      </div>
+      <div class="info-item">
+        <span class="info-label">Price($):</span>
+        <span id="trip-price" class="info-value">N/A</span>
+      </div>
+    </div>
+
+    <!-- Add an ID to the "Book Now" button -->
+    <a id="book-now-button" class="cta-button"><span>Book Now</span>
+    <i class="fas fa-plane"></i></a>
+  </div>
+</section>
+<!-- Gallery Section -->
+<section id="gallery">
+  <h2>Trip Gallery</h2>
+  <div class="gallery-grid" id="trip-gallery">
+    <!-- Images will be dynamically inserted here -->
+  </div>
+</section>
+
+<!-- Trip Highlights Section -->
+<section id="highlights">
+  <h2>Trip Highlights</h2>
+  <ul id="trip-highlights">
+    <!-- Highlights will be dynamically inserted here -->
+  </ul>
+</section>
+
+<!-- Reviews Section -->
+<section id="reviews">
+  <h2>Customer Reviews</h2>
+  <div class="reviews-grid" id="trip-reviews">
+    <!-- Reviews will be dynamically inserted here -->
+  </div>
+</section>
+
+
+<!-- Inclusions & Exclusions Section -->
+<section id="inclusions-exclusions">
+  <h2>What's Included & Excluded</h2>
+  <div class="inclusions-exclusions-grid">
+    <div class="inclusions">
+      <h3>Inclusions</h3>
+      <ul id="trip-inclusions">
+        <!-- Inclusions will be dynamically inserted here -->
+      </ul>
+    </div>
+    <div class="exclusions">
+      <h3>Exclusions</h3>
+      <ul id="trip-exclusions">
+        <!-- Exclusions will be dynamically inserted here -->
+      </ul>
+    </div>
+  </div>
+</section>
+
+
+
+
+<!-- FAQs Section -->
+<section id="faqs">
+  <h2>Frequently Asked Questions</h2>
+  <div class="faq-grid" id="trip-faqs">
+    <!-- FAQs will be dynamically inserted here -->
+  </div>
+</section>
+
+<!-- Itinerary Section -->
+<section id="itinerary">
+  <h2>Itinerary</h2>
+  <div class="itinerary-grid" id="trip-itinerary">
+    <!-- Itinerary items will be dynamically inserted here -->
+  </div>
+</section>
+
+<footer style="width: 100%; background: linear-gradient(to right, white, #1abc9c); color: black; padding: 50px 0 30px; font-size: 13px; line-height: 20px;">
+  <div class="row" style="width: 85%; margin: auto; display: flex; flex-wrap: wrap; align-items: flex-start; justify-content: space-between;">
+    <div class="col" style="flex-basis: 25%; padding: 10px;">
+      <img src="/img/logo.png" class="footer_logo" alt="Footer Logo" style="width: 80px; position: relative; top: -23px; left: -20px;">
+      <p class="footer_about" style="color: black; position: relative; top: -23px;">Discover the best moments captured through the lens. We bring you high-quality visuals for every occasion, helping you tell your story effortlessly.</p>
+    </div>
+    <div class="col" style="flex-basis: 15%; padding: 10px;">
+      <h3 style="width: fit-content; margin-bottom: 40px; position: relative; font-family: 'Rowdies', serif;">Office <div class="bottom_line" style="width: 100%; height: 5px; background: #767676; border-radius: 3px; position: absolute; top: 25px; left: 0; overflow: hidden;"><span style="width: 15px; height: 100%; background: #f66335; border-radius: 3px; position: absolute; top: 0; left: 10px; animation: moveline 2s linear infinite;"></span></div></h3>
+      <p>2841 Romines Mill Road</p>
+      <p>Plano</p>
+      <p>Texas, ZIP 75074, United States</p>
+      <p class="footer_email" style="width: fit-content; border-bottom: 1px solid #f66335; margin: 20px 0;">info@stepouttravels.be </p>
+      <h4>+32 472 96 61 00</h4>
+    </div>
+    <div class="col" style="flex-basis: 15%; padding: 10px;">
+      <h3 style="width: fit-content; margin-bottom: 40px; position: relative; font-family: 'Rowdies', serif;">Links <div class="bottom_line" style="width: 100%; height: 5px; background: #767676; border-radius: 3px; position: absolute; top: 25px; left: 0; overflow: hidden;"><span style="width: 15px; height: 100%; background: #f66335; border-radius: 3px; position: absolute; top: 0; left: 10px; animation: moveline 2s linear infinite;"></span></div></h3>
+      <ul style="list-style: none; padding: 0;">
+        <li style="margin-bottom: 12px;"><a href="" style="text-decoration: none; color: #f66335;">HOME</a></li>
+        <li style="margin-bottom: 12px;"><a href="" style="text-decoration: none; color: #f66335;">ABOUT</a></li>
+        <li style="margin-bottom: 12px;"><a href="" style="text-decoration: none; color: #f66335;">SERVICE</a></li>
+        <li style="margin-bottom: 12px;"><a href="" style="text-decoration: none; color: #f66335;">CONTACT US</a></li>
+      </ul>
+    </div>
+    <div class="col" style="flex-basis: 25%; padding: 10px;">
+      <h3 style="width: fit-content; margin-bottom: 40px; position: relative; font-family: 'Rowdies', serif;">Newsletter <div class="bottom_line" style="width: 100%; height: 5px; background: #767676; border-radius: 3px; position: absolute; top: 25px; left: 0; overflow: hidden;"><span style="width: 15px; height: 100%; background: #f66335; border-radius: 3px; position: absolute; top: 0; left: 10px; animation: moveline 2s linear infinite;"></span></div></h3>
+      <form style="padding-bottom: 15px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid #f66335; margin-bottom: 50px;">
+        <ion-icon class="icon" name="mail" style="font-size: 18px; margin-right: 10px;"></ion-icon>
+        <input type="email" placeholder="Enter your email" required style="width: 100%; background: transparent; color: #ccc; border: 0; outline: none;">
+        <button type="submit" style="background: transparent; border: 0; outline: none; cursor: pointer;"><ion-icon class="icon_right" name="arrow-round-forward" style="font-size: 16px; color: #ccc;"></ion-icon></button>
+      </form>
+      <div class="social_icons" style="display: flex;">
+        <ion-icon class="social_icon" name="logo-facebook" style="width: 30px; height: 30px; border-radius: 50%; text-align: center; line-height: 40px; font-size: 20px; color: #fff; background: #f66335; margin-right: 15px; padding: 5px; cursor: pointer;"></ion-icon>
+        <ion-icon class="social_icon" name="logo-whatsapp" style="width: 30px; height: 30px; border-radius: 50%; text-align: center; line-height: 40px; font-size: 20px; color: #fff; background: #f66335; margin-right: 15px; padding: 5px; cursor: pointer;"></ion-icon>
+        <ion-icon class="social_icon" name="logo-twitter" style="width: 30px; height: 30px; border-radius: 50%; text-align: center; line-height: 40px; font-size: 20px; color: #fff; background: #f66335; margin-right: 15px; padding: 5px; cursor: pointer;"></ion-icon>
+        <ion-icon class="social_icon" name="logo-instagram" style="width: 30px; height: 30px; border-radius: 50%; text-align: center; line-height: 40px; font-size: 20px; color: #fff; background: #f66335; margin-right: 15px; padding: 5px; cursor: pointer;"></ion-icon>
+      </div>
+    </div>
+  </div>
+  <hr style="width: 90%; border: 0; border-bottom: 1px solid #ccc; margin: 20px auto;">
+  <p class="copyright" style="text-align: center;">StepOut Travel Ⓒ 2025 - All Rights Reserved</p>
+</footer>
+
+<script>
+
+
+  const trips = {
+    paris: {
+      title: "Paris",
+      image: "img/paris.jpg",
+      description: "Experience the city of love with a visit to the Eiffel Tower, Louvre Museum, and more.",
+      duration: "7 Days",
+      prices: "1500",
+      rating: 4.5,
+      gallery: [
+        "img/paris.jpg",
+        "img/rome.jpeg",
+        "img/bali.jpg",
+        "img/newyork.jpeg"
+      ],
+      destinationDescription: "Paris, the capital of France, is renowned for its art, fashion, and culture. From the iconic Eiffel Tower to the historic Louvre Museum, Paris offers a blend of history and modernity.",
+      highlights: [
+        "Visit the Eiffel Tower",
+        "Explore the Louvre Museum",
+        "Stroll along the Seine River",
+        "Enjoy French cuisine"
+      ],
+      itinerary: [
+        { day: "Day 1", activity: "Arrival and city tour" },
+        { day: "Day 2", activity: "Visit Eiffel Tower and Louvre Museum" },
+        { day: "Day 3", activity: "Seine River cruise" },
+        { day: "Day 4", activity: "Free day for shopping" }
+      ],
+      inclusions: [
+        "Accommodation in 4-star hotels",
+        "Daily breakfast",
+        "Guided city tours",
+        "Airport transfers"
+      ],
+      exclusions: [
+        "International flights",
+        "Travel insurance",
+        "Personal expenses",
+        "Visa fees"
+      ],
+      faqs: [
+        { question: "What is the best time to visit Paris?", answer: "The best time to visit Paris is during spring (April to June) or fall (September to November) when the weather is pleasant." },
+        { question: "Do I need a visa to visit Paris?", answer: "Yes, most travelers need a visa to visit France. Please check with your local embassy for details." }
+      ],
+      reviews: [
+        { name: "John Doe", comment: "Amazing trip! Highly recommended.", rating: 5 },
+        { name: "Jane Smith", comment: "Paris is beautiful. Loved every moment.", rating: 4.5 }
+      ]
+    },
+    tokyo: {
+      title: "Tokyo",
+      image: "images/tokyo.jpg",
+      description: "Discover the vibrant culture of Japan, from sushi to cherry blossoms.",
+      duration: "10 Days",
+      prices: "2000"
+    },
+    "new-york": {
+      title: "New York",
+      image: "images/new-york.jpg",
+      description: "Explore the city that never sleeps, from Times Square to Central Park.",
+      duration: "5 Days",
+      price: "1200"
+    }
+  };
+  // Fetch trip details from URL parameters
+  const urlParams = new URLSearchParams(window.location.search);
+  const trip = urlParams.get('trip');
+
+  if (trip && trips[trip]) {
+    const tripData = trips[trip];
+
+    document.getElementById('trip-title').textContent = trips[trip].title;
+    document.getElementById('trip-image').src = trips[trip].image;
+    document.getElementById('trip-description').textContent = trips[trip].description;
+
+    // Display duration and price
+    document.getElementById('trip-duration').textContent = trips[trip].duration;
+    document.getElementById('trip-price').textContent = trips[trip].prices;
+    document.getElementById('trip-rating').textContent=trips[trip].rating;
+
+    // Update "Book Now" button href
+    const bookNowButton = document.getElementById('book-now-button');
+    bookNowButton.href = `payment.html?trip=${trip}&price=${tripData.prices}`;
+    // Update gallery
+    const galleryGrid = document.getElementById('trip-gallery');
+    galleryGrid.innerHTML = tripData.gallery
+      .map(image => `<img src="${image}" alt="${tripData.title}">`)
+      .join('');
+    // Update highlights
+    const highlightsList = document.getElementById('trip-highlights');
+    highlightsList.innerHTML = tripData.highlights
+      .map(highlight => `<li>${highlight}</li>`)
+      .join('');
+
+    // Update itinerary
+    const itineraryGrid = document.getElementById('trip-itinerary');
+    itineraryGrid.innerHTML = tripData.itinerary
+      .map(item => `
+          <div class="itinerary-item">
+            <h3>${item.day}</h3>
+            <p>${item.activity}</p>
+          </div>
+        `)
+      .join('');
+
+    // Update inclusions & exclusions
+    const inclusionsList = document.getElementById('trip-inclusions');
+    inclusionsList.innerHTML = tripData.inclusions
+      .map(inclusion => `<li>${inclusion}</li>`)
+      .join('');
+
+    const exclusionsList = document.getElementById('trip-exclusions');
+    exclusionsList.innerHTML = tripData.exclusions
+      .map(exclusion => `<li>${exclusion}</li>`)
+      .join('');
+
+    // Update FAQs
+    const faqGrid = document.getElementById('trip-faqs');
+    faqGrid.innerHTML = tripData.faqs
+      .map(faq => `
+          <div class="faq-item">
+            <h3>${faq.question}</h3>
+            <p>${faq.answer}</p>
+          </div>
+        `)
+      .join('');
+
+    // Update reviews
+    const reviewsGrid = document.getElementById('trip-reviews');
+    reviewsGrid.innerHTML = tripData.reviews
+      .map(review => `
+          <div class="review-item">
+            <h3>${review.name}</h3>
+            <div class="star-rating">
+              ${generateStarRating(review.rating).outerHTML}
+            </div>
+            <p>${review.comment}</p>
+          </div>
+        `)
+      .join('');
+
+
+
+  } else {
+    document.getElementById('trip-detail').innerHTML = "<h2>Trip not found</h2>";
+  }
+
+
+  // Function to generate star rating
+  function generateStarRating(rating) {
+    const starContainer = document.createElement('div');
+    starContainer.classList.add('star-rating');
+
+    const totalStars = 5;
+    const filledStars = Math.floor(rating);
+    const hasHalfStar = rating % 1 !== 0;
+
+    for (let i = 0; i < filledStars; i++) {
+      const star = document.createElement('span');
+      star.classList.add('star', 'filled');
+      star.innerHTML = '★';
+      starContainer.appendChild(star);
+    }
+
+    if (hasHalfStar) {
+      const halfStar = document.createElement('span');
+      halfStar.classList.add('star', 'filled');
+      halfStar.innerHTML = '½';
+      starContainer.appendChild(halfStar);
+    }
+
+    for (let i = filledStars + (hasHalfStar ? 1 : 0); i < totalStars; i++) {
+      const star = document.createElement('span');
+      star.classList.add('star');
+      star.innerHTML = '★';
+      starContainer.appendChild(star);
+    }
+
+    return starContainer;
+  }
+</script>
+</body>
+</html>
