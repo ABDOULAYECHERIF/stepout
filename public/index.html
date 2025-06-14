@@ -1249,9 +1249,9 @@
     <div class="hero-content">
       <p class="hero-subtitle animate__animated animate__fadeIn">EXCLUSIVE LUXURY TRAVEL</p>
       <h1 class="hero-title animate__animated animate__fadeIn animate__delay-1s">Discover Extraordinary Journeys</h1>
-      <p class="hero-text animate__animated animate__fadeIn animate__delay-1s">Voyager redefines luxury travel with unparalleled experiences in the world's most exquisite destinations.</p>
+      <p class="hero-text animate__animated animate__fadeIn animate__delay-1s">StepOut Travel redefines luxury travel with unparalleled experiences in the world's most exquisite destinations.</p>
       <div class="hero-btns animate__animated animate__fadeIn animate__delay-2s">
-        <a href="#" class="btn pulse">Explore Now <i class="fas fa-arrow-right"></i></a>
+        <a href="#destinations" class="btn pulse">Explore Now <i class="fas fa-arrow-right"></i></a>
         <a href="#" class="btn btn-outline">Learn More</a>
       </div>
     </div>
@@ -1268,22 +1268,25 @@
 
     <div class="destinations-grid">
       <!-- Destination 1 -->
-      <div class="destination-card card-animate" style="animation-delay: 0.1s">
-        <div class="destination-image">
-          <img src="https://images.unsplash.com/photo-1518391846015-55a9cc003b25?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Santorini, Greece" loading="lazy">
-          <div class="destination-badge">Luxury</div>
-        </div>
-        <div class="destination-content">
-          <h3>Santorini, Greece</h3>
-          <p>Private cliffside villas with panoramic Aegean Sea views and 24/7 butler service.</p>
-          <div class="destination-meta">
-            <div class="destination-price">From €1,000</div>
-            <div class="destination-duration">
-              <i class="fas fa-clock"></i> 7 nights
+      <a href="lisbon.html" style="text-decoration: none; color: inherit;">
+        <div class="destination-card card-animate" style="animation-delay: 0.1s">
+          <div class="destination-image">
+            <img src="https://content.tui.co.uk/adamtui/2016_9/29_15/8a8f17a0-81ec-4f9c-b534-a69000fe6d0a/LIB_SHU_14_F784WebOriginalCompressed.jpg?i10c=img.resize(width:1080);img.crop(width:1080%2Cheight:608)" alt="Santorini, Greece" loading="lazy">
+            <div class="destination-badge">Luxury</div>
+          </div>
+          <div class="destination-content">
+            <h3>Lisbon, Portugal</h3>
+            <p>6-DAY ESCAPE</p>
+            <div class="destination-meta">
+              <div class="destination-price">From €949 PP</div>
+              <div class="destination-duration">
+                <i class="fas fa-clock"></i> 6 nights
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      </a>
+
 
       <!-- Destination 2 -->
       <div class="destination-card card-animate" style="animation-delay: 0.2s">
@@ -1493,7 +1496,7 @@
       <div class="footer-col animate__animated animate__fadeIn animate__delay-1s">
         <h3 class="footer-heading">Explore</h3>
         <ul class="footer-links">
-          <li><a href="#">Home</a></li>
+          <li><a href="#" onclick="downloadPDFs()">Terms and Conditions</a></li>
           <li><a href="#destinations">Destinations</a></li>
           <li><a href="#experience">Experience</a></li>
           <li><a href="#testimonials">Testimonials</a></li>
@@ -1542,15 +1545,33 @@
   </a>
   <a href="#experience">
     <i class="fas fa-suitcase-rolling"></i>
-    <span>Journeys</span>
+    <span>TRIPS</span>
   </a>
-  <a href="#contact">
-    <i class="fas fa-user"></i>
-    <span>Account</span>
+  <a href="contact.html" class="active">
+    <i class="fas fa-address-card"></i>
+    <span>Contact</span>
   </a>
 </div>
 
 <script>
+  function downloadPDFs() {
+    const files = [
+      '../docs/BijzondereVoorwaarden.pdf',
+      '../docs/AlgemeneReisvoorwaardenPakketreisOvereenkomsten2024.pdf',
+      '../docs/AlgemeneReisvoorwaardenVerkoopReisdiensten2024.pdf',
+      '../docs/AlgemeneVoorwaardenGekoppeldeReisarrangementen2024.pdf',
+
+    ];
+
+    files.forEach(file => {
+      const link = document.createElement('a');
+      link.href = file;
+      link.download = file.split('/').pop();
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    });
+  }
   // Mobile Menu Toggle
   const mobileMenuBtn = document.getElementById('mobileMenuBtn');
   const navLinks = document.getElementById('navLinks');
