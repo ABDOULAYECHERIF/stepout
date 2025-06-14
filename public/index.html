@@ -9,6 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Kelvinch&display=swap" rel="stylesheet">
   <style>
     :root {
 
@@ -191,6 +192,7 @@
     }
 
     .logo {
+      font-family: 'Kelvinch', serif;
       font-size: 22px;
       font-weight: 700;
       color: var(--light);
@@ -209,29 +211,72 @@
       color: lightgreen;
     }
 
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+    }
+
+    .nav-links li {
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-weight: 500;
+      font-size: 16px;
+      position: relative;
+    }
+
+    .nav-links a:after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--secondary);
+      transition: var(--transition);
+    }
+
+    .nav-links a:hover:after {
+      width: 100%;
+    }
+
     .nav-actions {
       display: flex;
       align-items: center;
       gap: 15px;
     }
 
+    /* Apple-like Toggle Switch */
     .theme-toggle {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      width: 50px;
+      height: 30px;
+      border-radius: 15px;
       background: rgba(255,255,255,0.1);
       border: none;
-      color: var(--light);
+      position: relative;
       cursor: pointer;
+      padding: 0;
       transition: var(--transition);
     }
 
-    .theme-toggle:hover {
-      background: var(--secondary);
-      color: var(--primary);
+    .toggle-switch {
+      width: 100%;
+      height: 100%;
+      position: relative;
+    }
+
+    .toggle-knob {
+      position: absolute;
+      top: 3px;
+      left: 3px;
+      width: 24px;
+      height: 24px;
+      background: var(--light);
+      border-radius: 50%;
+      transition: var(--transition);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.3);
     }
 
     .mobile-menu-btn {
@@ -1120,8 +1165,10 @@
         height: 100vh;
         background: var(--dark);
         flex-direction: column;
-        align-items: center;
-        justify-content: center;
+        align-items: flex-start;
+        justify-content: flex-start;
+        padding-top: 80px;
+        padding-left: 40px;
         transition: var(--transition);
         z-index: 1000;
         box-shadow: var(--shadow-xl);
@@ -1132,11 +1179,16 @@
       }
 
       .nav-links li {
-        margin: 15px 0;
+        margin: 20px 0;
       }
 
       .nav-links a {
         font-size: 18px;
+        padding: 10px 0;
+      }
+
+      .nav-links a:after {
+        bottom: 0;
       }
 
       .hero-btns {
@@ -1164,15 +1216,6 @@
         <img src="https://res.cloudinary.com/dtcgjrxfq/image/upload/v1749857347/logo_wve4le.png" alt="Voyager Logo"> StepOut<span>Travel</span>
       </a>
 
-      <div class="nav-actions">
-        <button class="theme-toggle" id="themeToggle">
-          <i class="fas fa-moon"></i>
-        </button>
-        <button class="mobile-menu-btn" id="mobileMenuBtn">
-          <i class="fas fa-bars"></i>
-        </button>
-      </div>
-
       <ul class="nav-links" id="navLinks">
         <li><a href="#">Home</a></li>
         <li><a href="#destinations">Destinations</a></li>
@@ -1180,6 +1223,17 @@
         <li><a href="#process">Journeys</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
+
+      <div class="nav-actions">
+        <button class="theme-toggle" id="themeToggle">
+          <div class="toggle-switch">
+            <div class="toggle-knob"></div>
+          </div>
+        </button>
+        <button class="mobile-menu-btn" id="mobileMenuBtn">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
     </nav>
   </div>
 </header>
@@ -1515,10 +1569,8 @@
     body.classList.toggle('light-mode');
 
     if (body.classList.contains('light-mode')) {
-      themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
       localStorage.setItem('theme', 'light');
     } else {
-      themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
       localStorage.setItem('theme', 'dark');
     }
   });
@@ -1526,9 +1578,6 @@
   // Check for saved theme preference
   if (localStorage.getItem('theme') === 'light') {
     body.classList.add('light-mode');
-    themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
-  } else {
-    themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
   }
 
   // Header Scroll Effect
