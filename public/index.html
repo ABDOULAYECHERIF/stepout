@@ -1496,7 +1496,11 @@
       <div class="footer-col animate__animated animate__fadeIn animate__delay-1s">
         <h3 class="footer-heading">Explore</h3>
         <ul class="footer-links">
-          <li><a href="#" onclick="downloadPDFs()">Terms and Conditions</a></li>
+          <li>
+            <a href="https://drive.google.com/drive/folders/1RLB1HOciskndw-Nv7zWakXSigJ07dqah?usp=sharing" target="_blank">
+              Terms and Conditions
+            </a>
+          </li>
           <li><a href="#destinations">Destinations</a></li>
           <li><a href="#experience">Experience</a></li>
           <li><a href="#testimonials">Testimonials</a></li>
@@ -1554,24 +1558,7 @@
 </div>
 
 <script>
-  function downloadPDFs() {
-    const files = [
-      '../docs/BijzondereVoorwaarden.pdf',
-      '../docs/AlgemeneReisvoorwaardenPakketreisOvereenkomsten2024.pdf',
-      '../docs/AlgemeneReisvoorwaardenVerkoopReisdiensten2024.pdf',
-      '../docs/AlgemeneVoorwaardenGekoppeldeReisarrangementen2024.pdf',
 
-    ];
-
-    files.forEach(file => {
-      const link = document.createElement('a');
-      link.href = file;
-      link.download = file.split('/').pop();
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-    });
-  }
   // Mobile Menu Toggle
   const mobileMenuBtn = document.getElementById('mobileMenuBtn');
   const navLinks = document.getElementById('navLinks');
