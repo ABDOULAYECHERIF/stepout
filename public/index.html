@@ -1437,31 +1437,46 @@
   </div>
 </section>
 
-<!-- App Testimonials -->
-<section class="section testimonials" id="testimonials">
-  <div class="container">
-    <div class="section-title">
-      <h2 class="animate__animated animate__fadeIn">Client Testimonials</h2>
-      <p class="animate__animated animate__fadeIn animate__delay-1s">The voices of those who have experienced the StepOut Travel difference.</p>
+<!-- App Inspiration Quotes -->
+<section id="testimonials" style="padding: 60px 20px; background: linear-gradient(135deg, #000000, #1a1a1a); color: #fff; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; text-align: center;">
+  <div style="max-width: 800px; margin: 0 auto;">
+    <h2 style="font-size: 2.5rem; font-weight: bold; margin-bottom: 30px; animation: fadeIn 1s ease-in-out;">What Drives Us</h2>
+
+    <div style="margin-bottom: 40px; animation: fadeInUp 1.2s ease-in-out;">
+      <p style="font-size: 1.8rem; font-style: italic; line-height: 1.6; color: #f0c040;">
+        “The world is always within reach.”
+      </p>
     </div>
 
-    <div class="testimonials-slider">
-      <div class="testimonial-card animate__animated animate__fadeIn">
-        <div class="testimonial-text">
-          StepOut transformed what would have been a typical luxury vacation into the most extraordinary experience of our lives. Their access to private venues and cultural experiences was unparalleled.
-        </div>
-        <div class="testimonial-author">
-          <div class="author-image">
-            <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Elizabeth Windsor" loading="lazy">
-          </div>
-          <div class="author-info">
-            <h4>Elizabeth Windsor</h4>
-            <p>London, UK</p>
-          </div>
-        </div>
-      </div>
+    <div style="animation: fadeInUp 1.6s ease-in-out;">
+      <p style="font-size: 1.8rem; font-style: italic; line-height: 1.6; color: #f0c040;">
+        “No destination is too far.”
+      </p>
     </div>
   </div>
+
+  <!-- Simple CSS animations (optional enhancement) -->
+  <style>
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 600px) {
+      #testimonials h2 {
+        font-size: 2rem;
+      }
+
+      #testimonials p {
+        font-size: 1.4rem;
+      }
+    }
+  </style>
 </section>
 
 <!-- App Newsletter -->
