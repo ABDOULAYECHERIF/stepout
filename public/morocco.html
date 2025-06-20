@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contact Us | Step Out Travels</title>
+  <title>Fez Adventure & Culture Trip | Step Out Travels</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -302,18 +302,19 @@
       z-index: 1001;
     }
 
-    /* App Hero Section */
-    .hero {
-      height: 100vh;
+    /* Trip Hero Banner */
+    .trip-hero {
+      height: auto;
       min-height: 100vh;
       position: relative;
       display: flex;
-      align-items: center;
+      align-items: flex-end;
       overflow: hidden;
       padding-top: 70px;
+      margin-bottom: 60px;
     }
 
-    .hero-video {
+    .trip-hero-image {
       position: absolute;
       top: 0;
       left: 0;
@@ -323,23 +324,35 @@
       z-index: -1;
     }
 
-    .hero-overlay {
+    .trip-hero-overlay {
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: linear-gradient(to bottom, rgba(10, 14, 23, 0.8), rgba(10, 14, 23, 0.4));
+      background: linear-gradient(to top, rgba(10, 14, 23, 0.9), rgba(10, 14, 23, 0.3));
       z-index: -1;
     }
 
-    .hero-content {
+    .trip-hero-content {
       width: 100%;
       color: var(--light);
-      padding: 0 20px;
+      padding: 60px 20px;
+      position: relative;
     }
 
-    .hero-subtitle {
+    .trip-hero-content:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+      z-index: -1;
+    }
+
+    .trip-hero-subtitle {
       font-size: 14px;
       letter-spacing: 2px;
       text-transform: uppercase;
@@ -348,45 +361,234 @@
       font-weight: 500;
     }
 
-    .hero-title {
-      font-size: 36px;
+    .trip-hero-title {
+      font-size: 48px;
       line-height: 1.2;
       margin-bottom: 20px;
     }
 
-    .hero-text {
-      font-size: 16px;
+    .trip-hero-text {
+      font-size: 18px;
       line-height: 1.7;
       margin-bottom: 30px;
       opacity: 0.9;
+      max-width: 800px;
     }
 
-    .hero-btns {
+    .trip-hero-meta {
+      display: flex;
+      gap: 30px;
+      margin-bottom: 30px;
+    }
+
+    .trip-meta-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .trip-meta-icon {
+      color: var(--secondary);
+      font-size: 20px;
+    }
+
+    .trip-hero-price {
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--secondary);
+      margin-bottom: 30px;
+    }
+
+    .trip-hero-btns {
       display: flex;
       gap: 15px;
       flex-wrap: wrap;
     }
 
-    /* Contact Form Styles */
-    .contact-form {
-      max-width: 800px;
-      margin: 0 auto;
-      background: var(--dark);
-      padding: 40px;
-      border-radius: 16px;
+    /* Trip Details Content */
+    .trip-details-content {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 50px;
+    }
+
+    .trip-details-text h3 {
+      font-size: 28px;
+      margin-bottom: 20px;
+      line-height: 1.3;
+    }
+
+    .trip-details-text p {
+      margin-bottom: 15px;
+      line-height: 1.7;
+      opacity: 0.9;
+      font-size: 16px;
+    }
+
+    .trip-highlights {
+      margin: 30px 0;
+    }
+
+    .highlight-item {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 15px;
+    }
+
+    .highlight-icon {
+      color: var(--secondary);
+      margin-right: 15px;
+      font-size: 18px;
+      margin-top: 3px;
+    }
+
+    .trip-itinerary {
+      margin-top: 50px;
+    }
+
+    .itinerary-day {
+      margin-bottom: 30px;
+      border-left: 2px solid var(--secondary);
+      padding-left: 20px;
+    }
+
+    .itinerary-day h4 {
+      font-size: 20px;
+      margin-bottom: 10px;
+      color: var(--secondary);
+    }
+
+    .itinerary-activities {
+      list-style-type: none;
+    }
+
+    .itinerary-activity {
+      position: relative;
+      padding-left: 25px;
+      margin-bottom: 10px;
+    }
+
+    .itinerary-activity:before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 10px;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--secondary);
+    }
+
+    /* Trip Gallery */
+    .trip-gallery {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+      margin-top: 30px;
+    }
+
+    .trip-gallery-item {
+      position: relative;
+      overflow: hidden;
+      height: 200px;
+      border-radius: 12px;
+      transition: var(--transition);
+      box-shadow: var(--shadow-md);
+    }
+
+    .trip-gallery-item:hover {
+      transform: translateY(-5px);
       box-shadow: var(--shadow-lg);
+    }
+
+    .trip-gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: var(--transition);
+    }
+
+    .trip-gallery-item:hover img {
+      transform: scale(1.05);
+    }
+
+    /* Booking Modal */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 2000;
+      opacity: 0;
+      visibility: hidden;
+      transition: var(--transition);
+    }
+
+    .modal-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .booking-modal {
+      background: var(--dark);
+      border-radius: 16px;
+      width: 90%;
+      max-width: 500px;
+      padding: 30px;
+      position: relative;
+      transform: translateY(20px);
+      transition: var(--transition);
+      box-shadow: var(--shadow-xl);
       border: 1px solid rgba(255,255,255,0.1);
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+
+    .modal-overlay.active .booking-modal {
+      transform: translateY(0);
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: none;
+      border: none;
+      color: var(--text-light);
+      font-size: 24px;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .modal-close:hover {
+      color: var(--secondary);
+    }
+
+    .modal-title {
+      font-size: 24px;
+      margin-bottom: 15px;
+      color: var(--secondary);
+    }
+
+    .modal-subtitle {
+      font-size: 16px;
+      color: var(--text-light);
+      margin-bottom: 20px;
     }
 
     .form-group {
-      margin-bottom: 25px;
+      margin-bottom: 15px;
     }
 
     .form-label {
       display: block;
       margin-bottom: 8px;
       font-weight: 500;
-      color: var(--text);
     }
 
     .form-control {
@@ -407,61 +609,10 @@
       box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.2);
     }
 
-    textarea.form-control {
-      min-height: 150px;
-      resize: vertical;
-    }
-
-    .form-submit {
-      width: 100%;
-      padding: 15px;
-      font-size: 16px;
-    }
-
-    .contact-info {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 30px;
-      margin-top: 50px;
-    }
-
-    .contact-card {
-      background: var(--dark);
-      padding: 30px;
-      border-radius: 16px;
-      box-shadow: var(--shadow-md);
-      transition: var(--transition);
-      border: 1px solid rgba(255,255,255,0.05);
-      text-align: center;
-    }
-
-    .contact-card:hover {
-      transform: translateY(-5px);
-      box-shadow: var(--shadow-lg);
-    }
-
-    .contact-icon {
-      font-size: 32px;
-      color: var(--secondary);
-      margin-bottom: 15px;
-    }
-
-    .contact-card h3 {
-      margin-bottom: 10px;
-    }
-
-    .contact-card p {
-      color: var(--text-light);
-      margin-bottom: 0;
-    }
-
-    .contact-card a {
-      color: var(--secondary);
-      transition: var(--transition);
-    }
-
-    .contact-card a:hover {
-      opacity: 0.8;
+    .modal-btns {
+      display: flex;
+      gap: 15px;
+      margin-top: 20px;
     }
 
     /* App Footer */
@@ -732,8 +883,7 @@
     body.light-mode .testimonial-card,
     body.light-mode .step,
     body.light-mode .stat-item,
-    body.light-mode .contact-form,
-    body.light-mode .contact-card {
+    body.light-mode .booking-modal {
       background: var(--dark);
       border: 1px solid rgba(0,0,0,0.1);
     }
@@ -753,15 +903,19 @@
         font-size: 40px;
       }
 
-      .hero-title {
-        font-size: 48px;
+      .trip-hero-title {
+        font-size: 60px;
       }
 
-      .hero-text {
-        font-size: 18px;
+      .trip-hero-text {
+        font-size: 20px;
       }
 
-      .contact-info {
+      .trip-details-content {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .trip-gallery {
         grid-template-columns: repeat(3, 1fr);
       }
 
@@ -783,8 +937,12 @@
         font-size: 48px;
       }
 
-      .hero-title {
-        font-size: 60px;
+      .trip-hero {
+        min-height: 700px;
+      }
+
+      .trip-gallery {
+        grid-template-columns: repeat(4, 1fr);
       }
 
       .footer-content {
@@ -827,12 +985,39 @@
         padding: 8px 0;
       }
 
-      .hero-btns {
-        justify-content: center;
+      .trip-hero {
+        height: auto;
+        min-height: 80vh;
       }
 
-      .contact-form {
-        padding: 30px 20px;
+      .trip-hero-title {
+        font-size: 36px;
+      }
+
+      .trip-hero-text {
+        font-size: 16px;
+      }
+
+      .trip-hero-meta {
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      .modal-btns {
+        flex-direction: column;
+      }
+
+      .booking-modal {
+        padding: 20px;
+        width: 95%;
+      }
+
+      .modal-title {
+        font-size: 20px;
+      }
+
+      .modal-subtitle {
+        font-size: 14px;
       }
     }
   </style>
@@ -851,7 +1036,7 @@
         <li><a href="about.html">About</a></li>
         <li><a href="index.html#experience">Experience</a></li>
         <li><a href="index.html#destinations">Trips</a></li>
-        <li><a href="contact.html" class="active">Contact</a></li>
+        <li><a href="contact.html">Contact</a></li>
       </ul>
 
       <div class="nav-actions">
@@ -868,38 +1053,269 @@
   </div>
 </header>
 
-<!-- App Hero Section -->
-<section class="hero">
-  <video autoplay muted loop class="hero-video">
-    <source src="https://assets.mixkit.co/videos/preview/mixkit-traveling-along-a-coastal-road-with-a-view-of-the-sea-41547-large.mp4" type="video/mp4">
-  </video>
-  <div class="hero-overlay"></div>
+<!-- Trip Hero Banner -->
+<section class="trip-hero">
+  <img src="https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="Fez, Morocco" class="trip-hero-image">
+  <div class="trip-hero-overlay"></div>
 
   <div class="container">
-    <div class="hero-content">
-      <p class="hero-subtitle animate__animated animate__fadeIn">GET IN TOUCH</p>
-      <h1 class="hero-title animate__animated animate__fadeIn animate__delay-1s">Contact Step Out Travels</h1>
-      <p class="hero-text animate__animated animate__fadeIn animate__delay-1s">We're here to answer your questions and help you plan your perfect journey.</p>
-      <div class="hero-btns animate__animated animate__fadeIn animate__delay-2s">
-        <a href="#contact-form" class="btn pulse">Send Message <i class="fas fa-arrow-right"></i></a>
-        <a href="tel:+32472966100" class="btn btn-outline">Call Now</a>
+    <div class="trip-hero-content">
+      <p class="trip-hero-subtitle animate__animated animate__fadeIn">6-DAY ADVENTURE</p>
+      <h1 class="trip-hero-title animate__animated animate__fadeIn animate__delay-1s">Fez Adventure & Culture Trip</h1>
+      <p class="trip-hero-text animate__animated animate__fadeIn animate__delay-1s">Dive deep into the history, culture, and mystique of Fez, Morocco. Guided tours, time for your own exploration, and optional adventurous excursions.</p>
+
+      <div class="trip-hero-meta animate__animated animate__fadeIn animate__delay-2s">
+        <div class="trip-meta-item">
+          <i class="fas fa-calendar-alt trip-meta-icon"></i>
+          <span>Custom Dates Available</span>
+        </div>
+        <div class="trip-meta-item">
+          <i class="fas fa-map-marker-alt trip-meta-icon"></i>
+          <span>Fez, Morocco</span>
+        </div>
+        <div class="trip-meta-item">
+          <i class="fas fa-users trip-meta-icon"></i>
+          <span>Small Group (12 max)</span>
+        </div>
+      </div>
+
+      <div class="trip-hero-price animate__animated animate__fadeIn animate__delay-2s">
+        From €950 per person
+      </div>
+
+      <div class="trip-hero-btns animate__animated animate__fadeIn animate__delay-3s">
+        <button class="btn pulse" id="bookNowBtn">Book Now <i class="fas fa-arrow-right"></i></button>
+        <a href="#itinerary" class="btn btn-outline">View Itinerary</a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Contact Form Section -->
-<section class="section" id="contact-form">
+<!-- Trip Details Section -->
+<section class="section" id="overview">
+  <div class="container">
+    <div class="trip-details-content">
+      <div class="trip-details-text animate__animated animate__fadeInLeft">
+        <h2>Discover Fez's Soul</h2>
+        <p>This 6-day adventure to Fez is designed to immerse you in the city's vibrant culture, stunning architecture, and rich history. From the moment you arrive, you'll feel the warm Moroccan hospitality and the spiritual essence of this ancient city.</p>
+        <p>Fez is a city of contrasts - medieval medinas meet modern life, traditional crafts thrive alongside contemporary art, and the scent of spices mingles with the aroma of mint tea. Our carefully curated itinerary balances must-see sights with hidden gems, group activities with free time to explore at your own pace.</p>
+
+        <div class="trip-highlights">
+          <h3>Trip Highlights</h3>
+          <div class="highlight-item">
+            <i class="fas fa-check-circle highlight-icon"></i>
+            <div>Guided tour through Fez el Bali, a UNESCO World Heritage Site</div>
+          </div>
+          <div class="highlight-item">
+            <i class="fas fa-check-circle highlight-icon"></i>
+            <div>Visit to the famous tanneries and Al-Qarawiyyin University</div>
+          </div>
+          <div class="highlight-item">
+            <i class="fas fa-check-circle highlight-icon"></i>
+            <div>Day trip to Sefrou Waterfalls & Berber cave homes in Bhalil</div>
+          </div>
+          <div class="highlight-item">
+            <i class="fas fa-check-circle highlight-icon"></i>
+            <div>Traditional hammam experience and halal cooking workshop</div>
+          </div>
+          <div class="highlight-item">
+            <i class="fas fa-check-circle highlight-icon"></i>
+            <div>Explore spiritual heritage and Andalusian quarter</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="trip-details-text animate__animated animate__fadeInRight">
+        <h3>What's Included</h3>
+        <div class="highlight-item">
+          <i class="fas fa-check highlight-icon"></i>
+          <div>Return flight Brussels–Fez</div>
+        </div>
+        <div class="highlight-item">
+          <i class="fas fa-check highlight-icon"></i>
+          <div>5 nights in a 3- or 4-star riad with breakfast</div>
+        </div>
+        <div class="highlight-item">
+          <i class="fas fa-check highlight-icon"></i>
+          <div>Transfers & local transport</div>
+        </div>
+        <div class="highlight-item">
+          <i class="fas fa-check highlight-icon"></i>
+          <div>Halal cooking workshop</div>
+        </div>
+        <div class="highlight-item">
+          <i class="fas fa-check highlight-icon"></i>
+          <div>Local English-speaking guides</div>
+        </div>
+        <div class="highlight-item">
+          <i class="fas fa-check highlight-icon"></i>
+          <div>Entrance fees to attractions</div>
+        </div>
+        <div class="highlight-item">
+          <i class="fas fa-check highlight-icon"></i>
+          <div>Step Out travel coordinator</div>
+        </div>
+
+        <h3 style="margin-top: 30px;">Not Included</h3>
+
+        <div class="highlight-item">
+          <i class="fas fa-times highlight-icon" style="color: var(--text-light);"></i>
+          <div>Travel insurance (required)</div>
+        </div>
+        <div class="highlight-item">
+          <i class="fas fa-times highlight-icon" style="color: var(--text-light);"></i>
+          <div>Lunches and some dinners</div>
+        </div>
+        <div class="highlight-item">
+          <i class="fas fa-times highlight-icon" style="color: var(--text-light);"></i>
+          <div>Personal expenses</div>
+        </div>
+        <div class="highlight-item">
+          <i class="fas fa-times highlight-icon" style="color: var(--text-light);"></i>
+          <div>Optional workshops and activities</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Trip Itinerary Section -->
+<section class="section experience" id="itinerary">
   <div class="container">
     <div class="section-title">
-      <h2 class="animate__animated animate__fadeIn">Send Us a Message</h2>
-      <p class="animate__animated animate__fadeIn animate__delay-1s">Fill out the form below and we'll get back to you as soon as possible.</p>
+      <h2 class="animate__animated animate__fadeIn">Daily Itinerary</h2>
+      <p class="animate__animated animate__fadeIn animate__delay-1s">Your Fez adventure day by day</p>
     </div>
 
-    <form class="contact-form animate__animated animate__fadeIn" id="contactForm" action="https://formspree.io/f/xeokkvld" method="POST">
+    <div class="trip-itinerary">
+      <div class="itinerary-day card-animate" style="animation-delay: 0.1s">
+        <h4>Day 1: Welcome to Fez</h4>
+        <ul class="itinerary-activities">
+          <li class="itinerary-activity">Arrival at Fès–Saïs Airport</li>
+          <li class="itinerary-activity">Transfer to riad/hotel in the Medina</li>
+          <li class="itinerary-activity">Welcome evening: Moroccan tea & group introduction</li>
+          <li class="itinerary-activity">Tip: Bring comfortable walking shoes</li>
+        </ul>
+      </div>
+
+      <div class="itinerary-day card-animate" style="animation-delay: 0.2s">
+        <h4>Day 2: Old Medina & Souk Tour</h4>
+        <ul class="itinerary-activities">
+          <li class="itinerary-activity">Guided tour through Fez el Bali (UNESCO site)</li>
+          <li class="itinerary-activity">Visit the famous tanneries and Al-Qarawiyyin University</li>
+          <li class="itinerary-activity">Explore vibrant local souks</li>
+          <li class="itinerary-activity">Lunch at a traditional halal restaurant</li>
+        </ul>
+      </div>
+
+      <div class="itinerary-day card-animate" style="animation-delay: 0.3s">
+        <h4>Day 3: Spiritual Heritage & Andalusian Quarter</h4>
+        <ul class="itinerary-activities">
+          <li class="itinerary-activity">Visit spiritual sites like Moulay Idriss Mausoleum</li>
+          <li class="itinerary-activity">Discover hidden gems in the Andalusian quarter</li>
+          <li class="itinerary-activity">Optional workshop: Arabic calligraphy or mosaic making</li>
+          <li class="itinerary-activity">Evening walk through illuminated Medina streets</li>
+        </ul>
+      </div>
+
+      <div class="itinerary-day card-animate" style="animation-delay: 0.4s">
+        <h4>Day 4: Sefrou Waterfalls & Bhalil Caves</h4>
+        <ul class="itinerary-activities">
+          <li class="itinerary-activity">Day trip to Sefrou's natural beauty</li>
+          <li class="itinerary-activity">Visit Berber cave homes in Bhalil</li>
+          <li class="itinerary-activity">Picnic/lunch with local specialties</li>
+          <li class="itinerary-activity">Return to Fez: Free evening</li>
+        </ul>
+      </div>
+
+      <div class="itinerary-day card-animate" style="animation-delay: 0.5s">
+        <h4>Day 5: Hammam & Cooking Workshop</h4>
+        <ul class="itinerary-activities">
+          <li class="itinerary-activity">Traditional hammam treatment (men/women separate)</li>
+          <li class="itinerary-activity">Halal cooking workshop: learn to prepare tajine or couscous</li>
+          <li class="itinerary-activity">Group dinner with live Gnawa music (optional)</li>
+        </ul>
+      </div>
+
+      <div class="itinerary-day card-animate" style="animation-delay: 0.6s">
+        <h4>Day 6: Departure</h4>
+        <ul class="itinerary-activities">
+          <li class="itinerary-activity">Free morning for souvenirs or last stroll</li>
+          <li class="itinerary-activity">Transfer to the airport</li>
+          <li class="itinerary-activity">Flight back to Brussels</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Trip Gallery Section -->
+<section class="section">
+  <div class="container">
+    <div class="section-title">
+      <h2 class="animate__animated animate__fadeIn">Fez Through Our Lens</h2>
+      <p class="animate__animated animate__fadeIn animate__delay-1s">Moments from previous Fez adventures</p>
+    </div>
+
+    <div class="trip-gallery">
+      <div class="trip-gallery-item card-animate" style="animation-delay: 0.1s">
+        <img src="https://th.bing.com/th/id/R.2d413740726fee1223494a4c33420831?rik=ph1sp6UL3rCaEQ&pid=ImgRaw&r=0" alt="Fez Medina" loading="lazy">
+      </div>
+      <div class="trip-gallery-item card-animate" style="animation-delay: 0.2s">
+        <img src="https://citizen-femme.com/wp-content/uploads/2019/01/riad-fes-scaled-1024x683.jpg" alt="Fez Tanneries" loading="lazy">
+      </div>
+      <div class="trip-gallery-item card-animate" style="animation-delay: 0.3s">
+        <img src="https://3t-travel.com/wp-content/uploads/2016/11/Shops_Fes_Medina-scaled.jpg" alt="Sefrou Waterfalls" loading="lazy">
+      </div>
+      <div class="trip-gallery-item card-animate" style="animation-delay: 0.4s">
+        <img src="https://media.traveler.es/photos/646b1197fc70ecfb9b92f192/16:9/w_1280,c_limit/GettyImages-948695560.jpg" alt="Traditional Hammam" loading="lazy">
+      </div>
+      <div class="trip-gallery-item card-animate" style="animation-delay: 0.5s">
+        <img src="https://static.independent.co.uk/s3fs-public/thumbnails/image/2018/06/27/08/fez.jpg" alt="Moroccan Cooking" loading="lazy">
+      </div>
+      <div class="trip-gallery-item card-animate" style="animation-delay: 0.6s">
+        <img src="https://www.visitmorocco.com/sites/default/files/styles/thumbnail_destination_background_top5/public/thumbnails/image/tanneries-medina-of-fez-morocco-wizard8492.jpg?itok=VYYh3Kpd" alt="Berber Cave Homes" loading="lazy">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Final CTA Section -->
+<section class="newsletter">
+  <div class="container">
+    <h2 class="animate__animated animate__fadeIn">Ready for Your Fez Adventure?</h2>
+    <p class="animate__animated animate__fadeIn animate__delay-1s">Limited spots available for this exclusive small-group experience.</p>
+
+    <div class="trip-hero-btns animate__animated animate__fadeIn animate__delay-2s" style="justify-content: center;">
+      <button class="btn pulse" id="bookNowBtn2">Book Now <i class="fas fa-arrow-right"></i></button>
+      <a href="contact.html" class="btn btn-outline">Contact Us</a>
+    </div>
+  </div>
+</section>
+
+<!-- Booking Modal -->
+<div class="modal-overlay" id="bookingModal">
+  <div class="booking-modal">
+    <button class="modal-close" id="modalClose">&times;</button>
+    <h2 class="modal-title">Book Your Fez Adventure</h2>
+    <p class="modal-subtitle">Custom Dates Available | From €950 per person</p>
+
+    <form id="bookingForm" action="https://formspree.io/f/xeokkvld" method="POST">
       <div class="form-group">
-        <label for="name" class="form-label">Your Name</label>
-        <input type="text" id="name" name="name" class="form-control" required>
+        <label for="travelers" class="form-label">Number of Travelers</label>
+        <select id="travelers" name="travelers" class="form-control" required>
+          <option value="" disabled selected>Select number</option>
+          <option value="1">1 Traveler</option>
+          <option value="2">2 Travelers</option>
+          <option value="3">3 Travelers</option>
+          <option value="4">4 Travelers</option>
+          <option value="5">5+ Travelers (contact us)</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="fullName" class="form-label">Full Name</label>
+        <input type="text" id="fullName" name="fullName" class="form-control" required>
       </div>
 
       <div class="form-group">
@@ -909,118 +1325,23 @@
 
       <div class="form-group">
         <label for="phone" class="form-label">Phone Number</label>
-        <input type="tel" id="phone" name="phone" class="form-control">
+        <input type="tel" id="phone" name="phone" class="form-control" required>
       </div>
 
       <div class="form-group">
-        <label for="subject" class="form-label">Subject</label>
-        <select id="subject" name="subject" class="form-control" required>
-          <option value="" disabled selected>Select a subject</option>
-          <option value="General Inquiry">General Inquiry</option>
-          <option value="Booking Information">Booking Information</option>
-          <option value="Custom Trip Request">Custom Trip Request</option>
-          <option value="Group Travel">Group Travel</option>
-          <option value="Other">Other</option>
-        </select>
+        <label for="message" class="form-label">Special Requests</label>
+        <textarea id="message" name="message" class="form-control" rows="3"></textarea>
       </div>
 
-      <div class="form-group">
-        <label for="message" class="form-label">Your Message</label>
-        <textarea id="message" name="message" class="form-control" required></textarea>
+      <input type="hidden" name="trip" value="Fez Adventure & Culture Trip">
+
+      <div class="modal-btns">
+        <button type="submit" class="btn pulse">Submit Booking <i class="fas fa-paper-plane"></i></button>
+        <button type="button" class="btn btn-outline" id="cancelBooking">Cancel</button>
       </div>
-
-      <button type="submit" class="btn form-submit pulse">Send Message <i class="fas fa-paper-plane"></i></button>
-    </form>
-
-    <div class="contact-info">
-      <div class="contact-card card-animate" style="animation-delay: 0.1s">
-        <div class="contact-icon">
-          <i class="fas fa-map-marker-alt"></i>
-        </div>
-        <h3>Our Office</h3>
-        <p>Antwerp, Belgium</p>
-      </div>
-
-      <div class="contact-card card-animate" style="animation-delay: 0.2s">
-        <div class="contact-icon">
-          <i class="fas fa-phone-alt"></i>
-        </div>
-        <h3>Call Us</h3>
-        <p><a href="tel:+32472966100">+32 472 96 61 00</a></p>
-        <p>24/7 Concierge</p>
-      </div>
-
-      <div class="contact-card card-animate" style="animation-delay: 0.3s">
-        <div class="contact-icon">
-          <i class="fas fa-envelope"></i>
-        </div>
-        <h3>Email Us</h3>
-        <p><a href="mailto:info@stepouttravels.be">info@stepouttravels.be</a></p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- FAQ Section -->
-<section class="section experience" id="faq">
-  <div class="container">
-    <div class="section-title">
-      <h2 class="animate__animated animate__fadeIn">Frequently Asked Questions</h2>
-      <p class="animate__animated animate__fadeIn animate__delay-1s">Find answers to common questions about our services</p>
-    </div>
-
-    <div class="experience-content">
-      <div class="experience-text animate__animated animate__fadeInLeft">
-        <div class="mission-item card-animate" style="animation-delay: 0.1s">
-          <div class="mission-icon">
-            <i class="fas fa-question-circle"></i>
-          </div>
-          <div class="mission-text">
-            <h3>How do I book a trip with Step Out Travels?</h3>
-            <p>You can book directly through our website, by calling our office, or by sending us a message through this contact form. Our team will guide you through the entire booking process.</p>
-          </div>
-        </div>
-
-
-
-        <div class="mission-item card-animate" style="animation-delay: 0.3s">
-          <div class="mission-icon">
-            <i class="fas fa-question-circle"></i>
-          </div>
-          <div class="mission-text">
-            <h3>Are your trips halal-friendly?</h3>
-            <p>Yes! All our trips are designed with halal-friendly considerations including food options, prayer facilities, and culturally appropriate accommodations.</p>
-          </div>
-        </div>
-
-        <div class="mission-item card-animate" style="animation-delay: 0.4s">
-          <div class="mission-icon">
-            <i class="fas fa-question-circle"></i>
-          </div>
-          <div class="mission-text">
-            <h3>Can I customize my trip?</h3>
-            <p>Absolutely! We specialize in creating personalized travel experiences. Contact us to discuss your specific needs and preferences.</p>
-          </div>
-        </div>
-      </div>
-
-
-    </div>
-  </div>
-</section>
-
-<!-- Final CTA Section -->
-<section class="newsletter">
-  <div class="container">
-    <h2 class="animate__animated animate__fadeIn">Ready for Your Next Adventure?</h2>
-    <p class="animate__animated animate__fadeIn animate__delay-1s">Join our mailing list to receive exclusive travel offers and inspiration.</p>
-
-    <form class="newsletter-form animate__animated animate__fadeIn animate__delay-2s">
-      <input type="email" class="newsletter-input" placeholder="Your email address" required>
-      <button type="submit" class="newsletter-btn">Subscribe</button>
     </form>
   </div>
-</section>
+</div>
 
 <!-- App Footer -->
 <footer>
@@ -1032,7 +1353,6 @@
         <div class="footer-social">
           <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
           <a href="https://www.instagram.com/stepouttravels?utm_source=ig_web_button_share_sheet&igsh=MW12N3MzbmhqcGxt" class="social-icon"><i class="fab fa-instagram"></i></a>
-
         </div>
       </div>
 
@@ -1099,9 +1419,6 @@
     <i class="fas fa-address-card"></i>
     <span>Contact</span>
   </a>
-
-
-
 </div>
 
 <script>
@@ -1167,22 +1484,53 @@
     }
   });
 
-  // Form Submission
-  const contactForm = document.getElementById('contactForm');
+  // Booking Modal
+  const bookingModal = document.getElementById('bookingModal');
+  const bookNowBtns = document.querySelectorAll('#bookNowBtn, #bookNowBtn2');
+  const modalClose = document.getElementById('modalClose');
+  const cancelBooking = document.getElementById('cancelBooking');
 
-  if (contactForm) {
-    contactForm.addEventListener('submit', function(e) {
+  bookNowBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      bookingModal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    });
+  });
+
+  modalClose.addEventListener('click', () => {
+    bookingModal.classList.remove('active');
+    document.body.style.overflow = '';
+  });
+
+  cancelBooking.addEventListener('click', () => {
+    bookingModal.classList.remove('active');
+    document.body.style.overflow = '';
+  });
+
+  // Close modal when clicking outside
+  bookingModal.addEventListener('click', (e) => {
+    if (e.target === bookingModal) {
+      bookingModal.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+  });
+
+  // Form Submission
+  const bookingForm = document.getElementById('bookingForm');
+
+  if (bookingForm) {
+    bookingForm.addEventListener('submit', function(e) {
       e.preventDefault();
 
-      const formData = new FormData(contactForm);
-      const submitButton = contactForm.querySelector('button[type="submit"]');
+      const formData = new FormData(bookingForm);
+      const submitButton = bookingForm.querySelector('button[type="submit"]');
       const originalButtonText = submitButton.innerHTML;
 
       // Show loading state
-      submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+      submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
       submitButton.disabled = true;
 
-      fetch(contactForm.action, {
+      fetch(bookingForm.action, {
         method: 'POST',
         body: formData,
         headers: {
@@ -1192,11 +1540,13 @@
         .then(response => {
           if (response.ok) {
             // Show success message
-            submitButton.innerHTML = '<i class="fas fa-check"></i> Message Sent!';
-            contactForm.reset();
+            submitButton.innerHTML = '<i class="fas fa-check"></i> Booking Request Sent!';
+            bookingForm.reset();
 
-            // Reset button after 3 seconds
+            // Close modal after 3 seconds
             setTimeout(() => {
+              bookingModal.classList.remove('active');
+              document.body.style.overflow = '';
               submitButton.innerHTML = originalButtonText;
               submitButton.disabled = false;
             }, 3000);
