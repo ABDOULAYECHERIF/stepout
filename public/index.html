@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="nl">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,7 +12,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Kelvinch&display=swap" rel="stylesheet">
   <style>
     :root {
-
       /* Dark Mode Colors */
       --primary-dark: #0a0e17;
       --secondary-dark: #d4af37;
@@ -28,8 +27,11 @@
       --accent-light: #8b5a2b;
       --light-light: #0a0e17;
       --dark-light: #ffffff;
-      --text-light: #333333;
-      --text-light-light: #666666;
+      --text-light: black;
+      --text-light-light: black;
+      body.light-mode .hero-title {
+        color: #000000; /* Black color */
+      }
 
       /* Current Mode Colors (default dark) */
       --primary: var(--primary-dark);
@@ -248,6 +250,36 @@
       gap: 15px;
     }
 
+    /* Language Switcher */
+    .language-switcher {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-right: 15px;
+    }
+
+    .language-btn {
+      background: none;
+      border: none;
+      color: var(--light);
+      font-size: 14px;
+      cursor: pointer;
+      padding: 5px 10px;
+      border-radius: 5px;
+      transition: var(--transition);
+      opacity: 0.7;
+    }
+
+    .language-btn.active {
+      opacity: 1;
+      background: rgba(255,255,255,0.1);
+    }
+
+    .language-btn:hover {
+      opacity: 1;
+      background: rgba(255,255,255,0.1);
+    }
+
     /* Apple-like Toggle Switch */
     .theme-toggle {
       width: 50px;
@@ -311,13 +343,14 @@
     }
 
     .hero-overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(to bottom, rgba(10, 14, 23, 0.8), rgba(10, 14, 23, 0.4));
-      z-index: -1;
+      background-image: url('https://wallpapers.com/images/hd/plain-white-background-3qzwpiavktxg11pr.jpg');
+      background-size: cover;
+      background-position: center;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
     }
 
     .hero-content {
@@ -1205,6 +1238,115 @@
         margin-right: 0;
         margin-bottom: 15px;
       }
+      /* WhatsApp Sticky Icon */
+      .whatsapp-float {
+        position: fixed;
+        width: 60px;
+        height: 60px;
+        bottom: 25px;
+        right: 25px;
+        background-color: #25d366;
+        color: #FFF;
+        border-radius: 50px;
+        text-align: center;
+        font-size: 30px;
+        box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+        z-index: 1000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        animation: float-whatsapp 3s ease-in-out infinite;
+        text-decoration: none;
+        border: 2px solid white;
+      }
+
+      .whatsapp-float:hover {
+        background-color: #128C7E;
+        transform: scale(1.1) rotate(5deg);
+        box-shadow: 0 6px 25px rgba(37, 211, 102, 0.6);
+      }
+
+      .whatsapp-float i {
+        filter: drop-shadow(0 2px 2px rgba(0,0,0,0.2));
+      }
+
+      @keyframes float-whatsapp {
+        0%, 100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-8px);
+        }
+      }
+
+      /* Pulse animation */
+      @keyframes pulse-whatsapp {
+        0% {
+          box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+        }
+        70% {
+          box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
+        }
+        100% {
+          box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+        }
+      }
+
+      .whatsapp-float.pulse {
+        animation: float-whatsapp 3s ease-in-out infinite, pulse-whatsapp 2s infinite;
+      }
+
+      /* Tooltip */
+      .whatsapp-tooltip {
+        position: absolute;
+        right: 70px;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(0,0,0,0.8);
+        color: white;
+        padding: 8px 12px;
+        border-radius: 6px;
+        font-size: 14px;
+        font-family: 'Montserrat', sans-serif;
+        white-space: nowrap;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+        pointer-events: none;
+      }
+
+      .whatsapp-tooltip:after {
+        content: '';
+        position: absolute;
+        left: 100%;
+        top: 50%;
+        transform: translateY(-50%);
+        border: 6px solid transparent;
+        border-left-color: rgba(0,0,0,0.8);
+      }
+
+      .whatsapp-float:hover .whatsapp-tooltip {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        .whatsapp-float {
+          width: 55px;
+          height: 55px;
+          bottom: 20px;
+          right: 20px;
+          font-size: 28px;
+        }
+
+        .whatsapp-tooltip {
+          font-size: 12px;
+          padding: 6px 10px;
+        }
+      }
+
     }
   </style>
 </head>
@@ -1218,14 +1360,18 @@
       </a>
 
       <ul class="nav-links" id="navLinks">
-        <li><a href="#">Home</a></li>
-        <li><a href="#destinations">Destinations</a></li>
-        <li><a href="#experience">Experience</a></li>
-        <li><a href="#destinations">Trips</a></li>
-        <li><a href="contact.html">Contact</a></li>
+        <li><a href="#" data-i18n="nav.home">Home</a></li>
+        <li><a href="#destinations" data-i18n="nav.destinations">Destinations</a></li>
+        <li><a href="#experience" data-i18n="nav.experience">Experience</a></li>
+        <li><a href="#destinations" data-i18n="nav.trips">Trips</a></li>
+        <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
       </ul>
 
       <div class="nav-actions">
+        <div class="language-switcher">
+          <button class="language-btn active" data-lang="nl">NL</button>
+          <button class="language-btn" data-lang="en">EN</button>
+        </div>
         <button class="theme-toggle" id="themeToggle">
           <div class="toggle-switch">
             <div class="toggle-knob"></div>
@@ -1247,24 +1393,27 @@
   <div class="hero-overlay"></div>
 
   <div class="container">
-    <div class="hero-content">
-      <p class="hero-subtitle animate__animated animate__fadeIn">EXCLUSIVE LUXURY TRAVEL</p>
-      <h1 class="hero-title animate__animated animate__fadeIn animate__delay-1s">Discover Extraordinary Journeys</h1>
-      <p class="hero-text animate__animated animate__fadeIn animate__delay-1s">StepOut Travel redefines luxury travel with unparalleled experiences in the world's most exquisite destinations.</p>
+    <div class="hero-content" >
+      <p class="hero-subtitle animate__animated animate__fadeIn" data-i18n="hero.subtitle">EXCLUSIVE LUXURY TRAVEL</p>
+      <h1 class="hero-title animate__animated animate__fadeIn animate__delay-1s" data-i18n="hero.title">Discover Extraordinary Journeys</h1>
+      <p class="hero-text animate__animated animate__fadeIn animate__delay-1s" data-i18n="hero.text">StepOut Travel redefines luxury travel with unparalleled experiences in the world's most exquisite destinations.</p>
       <div class="hero-btns animate__animated animate__fadeIn animate__delay-2s">
-        <a href="#destinations" class="btn pulse">Explore Now <i class="fas fa-arrow-right"></i></a>
-        <a href="about.html" class="btn btn-outline">Learn More</a>
+        <a href="#destinations" class="btn pulse" data-i18n="hero.btn1">Explore Now <i class="fas fa-arrow-right"></i></a>
+        <a href="about.html" class="btn btn-outline" data-i18n="hero.btn2">Learn More</a>
       </div>
     </div>
   </div>
 </section>
 
+
+
+
 <!-- App Featured Destinations -->
 <section class="section" id="destinations">
   <div class="container">
     <div class="section-title">
-      <h2 class="animate__animated animate__fadeIn">Curated Destinations</h2>
-      <p class="animate__animated animate__fadeIn animate__delay-1s">Our portfolio of hand-selected destinations represents the pinnacle of luxury travel.</p>
+      <h2 class="animate__animated animate__fadeIn" data-i18n="destinations.title">Curated Destinations</h2>
+      <p class="animate__animated animate__fadeIn animate__delay-1s" data-i18n="destinations.subtitle">Our portfolio of hand-selected destinations represents the pinnacle of luxury travel.</p>
     </div>
 
     <div class="destinations-grid">
@@ -1273,63 +1422,61 @@
         <div class="destination-card card-animate" style="animation-delay: 0.1s">
           <div class="destination-image">
             <img src="https://content.tui.co.uk/adamtui/2016_9/29_15/8a8f17a0-81ec-4f9c-b534-a69000fe6d0a/LIB_SHU_14_F784WebOriginalCompressed.jpg?i10c=img.resize(width:1080);img.crop(width:1080%2Cheight:608)" alt="Santorini, Greece" loading="lazy">
-            <div class="destination-badge">Luxury</div>
+            <div class="destination-badge" data-i18n="destinations.lisbon.badge">Luxury</div>
           </div>
           <div class="destination-content">
-            <h3>Lisbon, Portugal</h3>
-            <p>6-DAY ESCAPE</p>
+            <h3 data-i18n="destinations.lisbon.title">Lisbon, Portugal</h3>
+            <p data-i18n="destinations.lisbon.description">6-DAY ESCAPE</p>
             <div class="destination-meta">
-              <div class="destination-price">From €949 PP</div>
+              <div class="destination-price" data-i18n="destinations.lisbon.price">From €949 PP</div>
               <div class="destination-duration">
-                <i class="fas fa-clock"></i> 6 nights
+                <i class="fas fa-clock"></i> <span data-i18n="destinations.lisbon.duration">6 nights</span>
               </div>
             </div>
           </div>
         </div>
       </a>
 
-
       <!-- Destination 2 -->
       <a href="japan.html" style="text-decoration: none; color: inherit;">
-      <div class="destination-card card-animate" style="animation-delay: 0.2s">
-        <div class="destination-image">
-          <img src="https://www.traveljunks.nl/wp-content/uploads/2019/04/Kyoto-Kiyomizu-Dera.jpg" alt="Kyoto, Japan" loading="lazy">
-          <div class="destination-badge">Cultural</div>
-        </div>
-        <div class="destination-content">
-          <h3>Kyoto, Japan</h3>
-          <p>Private tea ceremonies with masters and Michelin-starred kaiseki dining.</p>
-          <div class="destination-meta">
-            <div class="destination-price">From €3,699</div>
-            <div class="destination-duration">
-              <i class="fas fa-clock"></i> 10 nights
+        <div class="destination-card card-animate" style="animation-delay: 0.2s">
+          <div class="destination-image">
+            <img src="https://www.traveljunks.nl/wp-content/uploads/2019/04/Kyoto-Kiyomizu-Dera.jpg" alt="Kyoto, Japan" loading="lazy">
+            <div class="destination-badge" data-i18n="destinations.kyoto.badge">Cultural</div>
+          </div>
+          <div class="destination-content">
+            <h3 data-i18n="destinations.kyoto.title">Kyoto, Japan</h3>
+            <p data-i18n="destinations.kyoto.description">Private tea ceremonies with masters and Michelin-starred kaiseki dining.</p>
+            <div class="destination-meta">
+              <div class="destination-price" data-i18n="destinations.kyoto.price">From €3,699</div>
+              <div class="destination-duration">
+                <i class="fas fa-clock"></i> <span data-i18n="destinations.kyoto.duration">10 nights</span>
+              </div>
             </div>
           </div>
         </div>
-      </div>
       </a>
 
       <!-- Destination 3 -->
       <a href="morocco.html" style="text-decoration: none; color: inherit;">
-      <div class="destination-card card-animate" style="animation-delay: 0.3s">
-        <div class="destination-image">
-          <img src="https://th.bing.com/th/id/OIP.vxZUQOsoeUmXwFvklO9_XgHaE8?r=0&rs=1&pid=ImgDetMain" alt="Machu Picchu, Peru" loading="lazy">
-          <div class="destination-badge">Adventure</div>
-        </div>
-        <div class="destination-content">
-          <h3>Fez, Morocco</h3>
-          <p>Discover Fez's Soul</p>
-          <div class="destination-meta">
-            <div class="destination-price">From €950 PP</div>
-            <div class="destination-duration">
-              <i class="fas fa-clock"></i> 5 nights
+        <div class="destination-card card-animate" style="animation-delay: 0.3s">
+          <div class="destination-image">
+            <img src="https://th.bing.com/th/id/OIP.vxZUQOsoeUmXwFvklO9_XgHaE8?r=0&rs=1&pid=ImgDetMain" alt="Machu Picchu, Peru" loading="lazy">
+            <div class="destination-badge" data-i18n="destinations.morocco.badge">Adventure</div>
+          </div>
+          <div class="destination-content">
+            <h3 data-i18n="destinations.morocco.title">Fez, Morocco</h3>
+            <p data-i18n="destinations.morocco.description">Discover Fez's Soul</p>
+            <div class="destination-meta">
+              <div class="destination-price" data-i18n="destinations.morocco.price">From €950 PP</div>
+              <div class="destination-duration">
+                <i class="fas fa-clock"></i> <span data-i18n="destinations.morocco.duration">5 nights</span>
+              </div>
             </div>
           </div>
         </div>
-      </div>
       </a>
     </div>
-
   </div>
 </section>
 
@@ -1337,24 +1484,24 @@
 <section class="section experience" id="experience">
   <div class="container">
     <div class="section-title">
-      <h2 class="animate__animated animate__fadeIn">The StepOut Difference</h2>
-      <p class="animate__animated animate__fadeIn animate__delay-1s">We don't just plan trips - we orchestrate once-in-a-lifetime experiences.</p>
+      <h2 class="animate__animated animate__fadeIn" data-i18n="experience.title">The StepOut Difference</h2>
+      <p class="animate__animated animate__fadeIn animate__delay-1s" data-i18n="experience.subtitle">We don't just plan trips - we orchestrate once-in-a-lifetime experiences.</p>
     </div>
 
     <div class="experience-content">
       <div class="experience-text animate__animated animate__fadeInLeft">
-        <h3>Unparalleled Access & Exclusivity</h3>
-        <p>StepOut Travel's global network grants you access to experiences unavailable to the general public. From private viewings in closed museums to dinners in historic palaces.</p>
-        <p>Our team of destination experts have lived and worked in the regions we serve, providing insider knowledge and connections that transform ordinary trips into extraordinary journeys.</p>
+        <h3 data-i18n="experience.heading">Unparalleled Access & Exclusivity</h3>
+        <p data-i18n="experience.text1">StepOut Travel's global network grants you access to experiences unavailable to the general public. From private viewings in closed museums to dinners in historic palaces.</p>
+        <p data-i18n="experience.text2">Our team of destination experts have lived and worked in the regions we serve, providing insider knowledge and connections that transform ordinary trips into extraordinary journeys.</p>
 
         <div class="experience-stats">
           <div class="stat-item">
             <div class="stat-number" data-target="99">0</div>
-            <div class="stat-text">Client Satisfaction</div>
+            <div class="stat-text" data-i18n="experience.stat1">Client Satisfaction</div>
           </div>
           <div class="stat-item">
             <div class="stat-number" data-target="75">0</div>
-            <div class="stat-text">Global Destinations</div>
+            <div class="stat-text" data-i18n="experience.stat2">Global Destinations</div>
           </div>
         </div>
       </div>
@@ -1370,27 +1517,27 @@
 <section class="section process" id="process">
   <div class="container">
     <div class="section-title">
-      <h2 class="animate__animated animate__fadeIn">Your Journey Begins</h2>
-      <p class="animate__animated animate__fadeIn animate__delay-1s">Our meticulous planning process ensures every detail is perfected.</p>
+      <h2 class="animate__animated animate__fadeIn" data-i18n="process.title">Your Journey Begins</h2>
+      <p class="animate__animated animate__fadeIn animate__delay-1s" data-i18n="process.subtitle">Our meticulous planning process ensures every detail is perfected.</p>
     </div>
 
     <div class="process-steps">
       <div class="step card-animate" style="animation-delay: 0.1s">
         <div class="step-number">1</div>
-        <h3>Personal Consultation</h3>
-        <p>Your dedicated travel designer conducts an in-depth consultation to understand your desires.</p>
+        <h3 data-i18n="process.step1.title">Personal Consultation</h3>
+        <p data-i18n="process.step1.description">Your dedicated travel designer conducts an in-depth consultation to understand your desires.</p>
       </div>
 
       <div class="step card-animate" style="animation-delay: 0.2s">
         <div class="step-number">2</div>
-        <h3>Bespoke Itinerary</h3>
-        <p>We craft a completely customized journey proposal with exclusive experience options.</p>
+        <h3 data-i18n="process.step2.title">Bespoke Itinerary</h3>
+        <p data-i18n="process.step2.description">We craft a completely customized journey proposal with exclusive experience options.</p>
       </div>
 
       <div class="step card-animate" style="animation-delay: 0.3s">
         <div class="step-number">3</div>
-        <h3>Seamless Execution</h3>
-        <p>Our global team ensures flawless execution with 24/7 support throughout your journey.</p>
+        <h3 data-i18n="process.step3.title">Seamless Execution</h3>
+        <p data-i18n="process.step3.description">Our global team ensures flawless execution with 24/7 support throughout your journey.</p>
       </div>
     </div>
   </div>
@@ -1400,40 +1547,40 @@
 <section class="section gallery">
   <div class="container">
     <div class="section-title">
-      <h2 class="animate__animated animate__fadeIn">Gallery of Wonders</h2>
-      <p class="animate__animated animate__fadeIn animate__delay-1s">Moments from our travelers' most extraordinary Voyager experiences.</p>
+      <h2 class="animate__animated animate__fadeIn" data-i18n="gallery.title">Gallery of Wonders</h2>
+      <p class="animate__animated animate__fadeIn animate__delay-1s" data-i18n="gallery.subtitle">Moments from our travelers' most extraordinary Voyager experiences.</p>
     </div>
 
     <div class="gallery-grid">
       <div class="gallery-item card-animate" style="animation-delay: 0.1s">
         <img src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Bali, Indonesia" loading="lazy">
         <div class="gallery-overlay">
-          <h3>Bali, Indonesia</h3>
-          <p>Private Beachfront Estate</p>
+          <h3 data-i18n="gallery.item1.title">Bali, Indonesia</h3>
+          <p data-i18n="gallery.item1.description">Private Beachfront Estate</p>
         </div>
       </div>
 
       <div class="gallery-item card-animate" style="animation-delay: 0.2s">
         <img src="https://images.fineartamerica.com/images/artworkimages/mediumlarge/1/eiffel-tower-marco-duran.jpg" alt="Paris, France" loading="lazy">
         <div class="gallery-overlay">
-          <h3>Paris, France</h3>
-          <p>Eiffel Tower Private Dinner</p>
+          <h3 data-i18n="gallery.item2.title">Paris, France</h3>
+          <p data-i18n="gallery.item2.description">Eiffel Tower Private Dinner</p>
         </div>
       </div>
 
       <div class="gallery-item card-animate" style="animation-delay: 0.3s">
         <img src="https://images.unsplash.com/photo-1464037866556-6812c9d1c72e?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="New York, USA" loading="lazy">
         <div class="gallery-overlay">
-          <h3>New York, USA</h3>
-          <p>Penthouse Skyline Views</p>
+          <h3 data-i18n="gallery.item3.title">New York, USA</h3>
+          <p data-i18n="gallery.item3.description">Penthouse Skyline Views</p>
         </div>
       </div>
 
       <div class="gallery-item card-animate" style="animation-delay: 0.4s">
         <img src="https://images.unsplash.com/photo-1503917988258-f87a78e3c995?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Cape Town, South Africa" loading="lazy">
         <div class="gallery-overlay">
-          <h3>Cape Town, South Africa</h3>
-          <p>Helicopter Wine Tour</p>
+          <h3 data-i18n="gallery.item4.title">Cape Town, South Africa</h3>
+          <p data-i18n="gallery.item4.description">Helicopter Wine Tour</p>
         </div>
       </div>
     </div>
@@ -1443,17 +1590,17 @@
 <!-- App Inspiration Quotes -->
 <section id="testimonials" style="padding: 60px 20px; background: linear-gradient(135deg, #000000, #1a1a1a); color: #fff; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; text-align: center;">
   <div style="max-width: 800px; margin: 0 auto;">
-    <h2 style="font-size: 2.5rem; font-weight: bold; margin-bottom: 30px; animation: fadeIn 1s ease-in-out;">What Drives Us</h2>
+    <h2 style="font-size: 2.5rem; font-weight: bold; margin-bottom: 30px; animation: fadeIn 1s ease-in-out;" data-i18n="quotes.title">What Drives Us</h2>
 
     <div style="margin-bottom: 40px; animation: fadeInUp 1.2s ease-in-out;">
-      <p style="font-size: 1.8rem; font-style: italic; line-height: 1.6; color: #f0c040;">
-        “The world is always within reach.”
+      <p style="font-size: 1.8rem; font-style: italic; line-height: 1.6; color: #f0c040;" data-i18n="quotes.quote1">
+        "The world is always within reach."
       </p>
     </div>
 
     <div style="animation: fadeInUp 1.6s ease-in-out;">
-      <p style="font-size: 1.8rem; font-style: italic; line-height: 1.6; color: #f0c040;">
-        “No destination is too far.”
+      <p style="font-size: 1.8rem; font-style: italic; line-height: 1.6; color: #f0c040;" data-i18n="quotes.quote2">
+        "No destination is too far."
       </p>
     </div>
   </div>
@@ -1485,12 +1632,12 @@
 <!-- App Newsletter -->
 <section class="newsletter" id="contact">
   <div class="container">
-    <h2 class="animate__animated animate__fadeIn">Begin Your Journey</h2>
-    <p class="animate__animated animate__fadeIn animate__delay-1s">Join our exclusive mailing list for first access to our most extraordinary travel experiences.</p>
+    <h2 class="animate__animated animate__fadeIn" data-i18n="newsletter.title">Begin Your Journey</h2>
+    <p class="animate__animated animate__fadeIn animate__delay-1s" data-i18n="newsletter.subtitle">Join our exclusive mailing list for first access to our most extraordinary travel experiences.</p>
 
     <form class="newsletter-form animate__animated animate__fadeIn animate__delay-2s">
-      <input type="email" class="newsletter-input" placeholder="Your email address" required>
-      <button type="submit" class="newsletter-btn">Request Consultation</button>
+      <input type="email" class="newsletter-input" placeholder="Your email address" data-i18n="newsletter.placeholder" required>
+      <button type="submit" class="newsletter-btn" data-i18n="newsletter.button">Request Consultation</button>
     </form>
   </div>
 </section>
@@ -1501,50 +1648,48 @@
     <div class="footer-content">
       <div class="footer-col animate__animated animate__fadeIn">
         <a href="#" class="footer-logo">StepOut<span>Travels</span></a>
-        <p class="footer-about">StepOut Travel is the world's premier luxury travel concierge, crafting extraordinary experiences for discerning clients</p>
+        <p class="footer-about" data-i18n="footer.about">StepOut Travel is the world's premier luxury travel concierge, crafting extraordinary experiences for discerning clients</p>
         <div class="footer-social">
           <a href="https://www.facebook.com/profile.php?id=61553695627612" class="social-icon"><i class="fab fa-facebook-f"></i></a>
           <a href="https://www.instagram.com/stepouttravels?utm_source=ig_web_button_share_sheet&igsh=MW12N3MzbmhqcGxt" class="social-icon"><i class="fab fa-instagram"></i></a>
-
-
         </div>
       </div>
 
       <div class="footer-col animate__animated animate__fadeIn animate__delay-1s">
-        <h3 class="footer-heading">Explore</h3>
+        <h3 class="footer-heading" data-i18n="footer.explore">Explore</h3>
         <ul class="footer-links">
           <li>
-            <a href="https://drive.google.com/drive/folders/1RLB1HOciskndw-Nv7zWakXSigJ07dqah?usp=sharing" target="_blank">
+            <a href="https://drive.google.com/drive/folders/1RLB1HOciskndw-Nv7zWakXSigJ07dqah?usp=sharing" target="_blank" data-i18n="footer.terms">
               Terms and Conditions
             </a>
           </li>
-          <li><a href="#destinations">Destinations</a></li>
-          <li><a href="#experience">Experience</a></li>
-          <li><a href="#testimonials">Testimonials</a></li>
+          <li><a href="#destinations" data-i18n="footer.destinations">Destinations</a></li>
+          <li><a href="#experience" data-i18n="footer.experience">Experience</a></li>
+          <li><a href="#testimonials" data-i18n="footer.testimonials">Testimonials</a></li>
         </ul>
       </div>
 
       <div class="footer-col animate__animated animate__fadeIn animate__delay-2s">
-        <h3 class="footer-heading">Destinations</h3>
+        <h3 class="footer-heading" data-i18n="footer.destinations">Destinations</h3>
         <ul class="footer-links">
-          <li><a href="#">Europe</a></li>
-          <li><a href="#">Asia</a></li>
-          <li><a href="#">Africa</a></li>
-          <li><a href="#">Americas</a></li>
+          <li><a href="#" data-i18n="footer.europe">Europe</a></li>
+          <li><a href="#" data-i18n="footer.asia">Asia</a></li>
+          <li><a href="#" data-i18n="footer.africa">Africa</a></li>
+          <li><a href="#" data-i18n="footer.americas">Americas</a></li>
         </ul>
       </div>
 
       <div class="footer-col animate__animated animate__fadeIn animate__delay-3s">
-        <h3 class="footer-heading">Contact</h3>
-        <p><i class="fas fa-map-marker-alt"></i> Antwerp, Belgium</p>
+        <h3 class="footer-heading" data-i18n="footer.contact">Contact</h3>
+        <p><i class="fas fa-map-marker-alt"></i> <span data-i18n="footer.address">Antwerp, Belgium</span></p>
         <p><i class="fas fa-phone"></i> +32 472 96 61 00</p>
         <p><i class="fas fa-envelope"></i>info@stepouttravels.be</p>
-        <p><i class="fas fa-clock"></i> 24/7 Concierge</p>
+        <p><i class="fas fa-clock"></i> <span data-i18n="footer.hours">24/7 Concierge</span></p>
       </div>
     </div>
 
     <div class="footer-bottom">
-      <p>&copy; 2025 StepOut TRAVEL. All Rights Reserved.</p>
+      <p>&copy; 2025 StepOut TRAVEL. <span data-i18n="footer.rights">All Rights Reserved.</span></p>
     </div>
   </div>
 </footer>
@@ -1558,23 +1703,262 @@
 <div class="mobile-bottom-nav">
   <a href="#" class="active">
     <i class="fas fa-home"></i>
-    <span>Home</span>
+    <span data-i18n="nav.home">Home</span>
   </a>
   <a href="about.html" class="active">
     <i class="fas fa-info-circle"></i>
-    <span>About</span>
+    <span data-i18n="nav.about">About</span>
   </a>
   <a href="#experience">
     <i class="fas fa-suitcase-rolling"></i>
-    <span>TRIPS</span>
+    <span data-i18n="nav.trips">TRIPS</span>
   </a>
   <a href="contact.html" class="active">
     <i class="fas fa-address-card"></i>
-    <span>Contact</span>
+    <span data-i18n="nav.contact">Contact</span>
   </a>
 </div>
 
 <script>
+  // Language translations
+  const translations = {
+    nl: {
+      // Navigation
+      "nav.home": "Home",
+      "nav.destinations": "Bestemmingen",
+      "nav.experience": "Ervaring",
+      "nav.trips": "Reizen",
+      "nav.contact": "Contact",
+      "nav.about": "Over Ons",
+
+      // Hero section
+      "hero.subtitle": "EXCLUSIEF LUXE REIZEN",
+      "hero.title": "Ontdek Buitengewone Reizen",
+      "hero.text": "StepOut Travel herdefinieert luxe reizen met ongeëvenaarde ervaringen in 's werelds meest exquise bestemmingen.",
+      "hero.btn1": "Verken Nu",
+      "hero.btn2": "Meer Info",
+
+      // Destinations
+      "destinations.title": "Gecureerde Bestemmingen",
+      "destinations.subtitle": "Ons portfolio van handgekozen bestemmingen vertegenwoordigt het hoogtepunt van luxe reizen.",
+      "destinations.lisbon.badge": "Luxe",
+      "destinations.lisbon.title": "Lissabon, Portugal",
+      "destinations.lisbon.description": "6-DAAGSE ONTSNAPPING",
+      "destinations.lisbon.price": "Vanaf €949 PP",
+      "destinations.lisbon.duration": "6 nachten",
+      "destinations.kyoto.badge": "Cultureel",
+      "destinations.kyoto.title": "Kyoto, Japan",
+      "destinations.kyoto.description": "Privé theeceremonies met meesters en Michelin-sterren kaiseki diners.",
+      "destinations.kyoto.price": "Vanaf €3.699",
+      "destinations.kyoto.duration": "10 nachten",
+      "destinations.morocco.badge": "Avontuur",
+      "destinations.morocco.title": "Fez, Marokko",
+      "destinations.morocco.description": "Ontdek de Ziel van Fez",
+      "destinations.morocco.price": "Vanaf €950 PP",
+      "destinations.morocco.duration": "5 nachten",
+
+      // Experience section
+      "experience.title": "Het StepOut Verschil",
+      "experience.subtitle": "We plannen niet alleen reizen - we orkestreren eenmalige ervaringen.",
+      "experience.heading": "Ongeëvenaarde Toegang & Exclusiviteit",
+      "experience.text1": "Het wereldwijde netwerk van StepOut Travel geeft u toegang tot ervaringen die niet beschikbaar zijn voor het grote publiek. Van privébezichtigingen in gesloten musea tot diners in historische paleizen.",
+      "experience.text2": "Ons team van bestemmingsdeskundigen heeft gewoond en gewerkt in de regio's die we bedienen, en biedt insidekennis en connecties die gewone reizen transformeren in buitengewone reizen.",
+      "experience.stat1": "Klanttevredenheid",
+      "experience.stat2": "Wereldwijde Bestemmingen",
+
+      // Process section
+      "process.title": "Uw Reis Begint",
+      "process.subtitle": "Ons zorgvuldige planningsproces zorgt ervoor dat elk detail perfect is.",
+      "process.step1.title": "Persoonlijk Consult",
+      "process.step1.description": "Uw toegewijde reisontwerper voert een diepgaand consult uit om uw wensen te begrijpen.",
+      "process.step2.title": "Op Maat Gemaakt Itinerary",
+      "process.step2.description": "We maken een volledig op maat gemaakte reisvoorstel met exclusieve ervaringsopties.",
+      "process.step3.title": "Naadloze Uitvoering",
+      "process.step3.description": "Ons wereldwijde team zorgt voor een foutloze uitvoering met 24/7 ondersteuning tijdens uw reis.",
+
+      // Gallery section
+      "gallery.title": "Galerij van Wonderen",
+      "gallery.subtitle": "Momenten van de meest buitengewone Voyager-ervaringen van onze reizigers.",
+      "gallery.item1.title": "Bali, Indonesië",
+      "gallery.item1.description": "Privé Strandhuis",
+      "gallery.item2.title": "Parijs, Frankrijk",
+      "gallery.item2.description": "Privé Diner Eiffeltoren",
+      "gallery.item3.title": "New York, VS",
+      "gallery.item3.description": "Penthouse met Skyline Uitzicht",
+      "gallery.item4.title": "Kaapstad, Zuid-Afrika",
+      "gallery.item4.description": "Helikopter Wijn Tour",
+
+      // Quotes section
+      "quotes.title": "Wat Ons Drijft",
+      "quotes.quote1": "De wereld is altijd binnen handbereik.",
+      "quotes.quote2": "Geen bestemming is te ver.",
+
+      // Newsletter section
+      "newsletter.title": "Begin Uw Reis",
+      "newsletter.subtitle": "Word lid van onze exclusieve mailinglijst voor eerste toegang tot onze meest buitengewone reiservaringen.",
+      "newsletter.placeholder": "Uw e-mailadres",
+      "newsletter.button": "Aanvraag Consult",
+
+      // Footer
+      "footer.about": "StepOut Travel is 's werelds belangrijkste luxe reisconciërge, die buitengewone ervaringen creëert voor veeleisende klanten.",
+      "footer.explore": "Ontdek",
+      "footer.terms": "Algemene Voorwaarden",
+      "footer.destinations": "Bestemmingen",
+      "footer.experience": "Ervaring",
+      "footer.testimonials": "Getuigenissen",
+      "footer.europe": "Europa",
+      "footer.asia": "Azië",
+      "footer.africa": "Afrika",
+      "footer.americas": "Amerika",
+      "footer.contact": "Contact",
+      "footer.address": "Antwerpen, België",
+      "footer.hours": "24/7 Conciërge",
+      "footer.rights": "Alle Rechten Voorbehouden."
+    },
+    en: {
+      // Navigation
+      "nav.home": "Home",
+      "nav.destinations": "Destinations",
+      "nav.experience": "Experience",
+      "nav.trips": "Trips",
+      "nav.contact": "Contact",
+      "nav.about": "About",
+
+      // Hero section
+      "hero.subtitle": "EXCLUSIVE LUXURY TRAVEL",
+      "hero.title": "Discover Extraordinary Journeys",
+      "hero.text": "StepOut Travel redefines luxury travel with unparalleled experiences in the world's most exquisite destinations.",
+      "hero.btn1": "Explore Now",
+      "hero.btn2": "Learn More",
+
+      // Destinations
+      "destinations.title": "Curated Destinations",
+      "destinations.subtitle": "Our portfolio of hand-selected destinations represents the pinnacle of luxury travel.",
+      "destinations.lisbon.badge": "Luxury",
+      "destinations.lisbon.title": "Lisbon, Portugal",
+      "destinations.lisbon.description": "6-DAY ESCAPE",
+      "destinations.lisbon.price": "From €949 PP",
+      "destinations.lisbon.duration": "6 nights",
+      "destinations.kyoto.badge": "Cultural",
+      "destinations.kyoto.title": "Kyoto, Japan",
+      "destinations.kyoto.description": "Private tea ceremonies with masters and Michelin-starred kaiseki dining.",
+      "destinations.kyoto.price": "From €3,699",
+      "destinations.kyoto.duration": "10 nights",
+      "destinations.morocco.badge": "Adventure",
+      "destinations.morocco.title": "Fez, Morocco",
+      "destinations.morocco.description": "Discover Fez's Soul",
+      "destinations.morocco.price": "From €950 PP",
+      "destinations.morocco.duration": "5 nights",
+
+      // Experience section
+      "experience.title": "The StepOut Difference",
+      "experience.subtitle": "We don't just plan trips - we orchestrate once-in-a-lifetime experiences.",
+      "experience.heading": "Unparalleled Access & Exclusivity",
+      "experience.text1": "StepOut Travel's global network grants you access to experiences unavailable to the general public. From private viewings in closed museums to dinners in historic palaces.",
+      "experience.text2": "Our team of destination experts have lived and worked in the regions we serve, providing insider knowledge and connections that transform ordinary trips into extraordinary journeys.",
+      "experience.stat1": "Client Satisfaction",
+      "experience.stat2": "Global Destinations",
+
+      // Process section
+      "process.title": "Your Journey Begins",
+      "process.subtitle": "Our meticulous planning process ensures every detail is perfected.",
+      "process.step1.title": "Personal Consultation",
+      "process.step1.description": "Your dedicated travel designer conducts an in-depth consultation to understand your desires.",
+      "process.step2.title": "Bespoke Itinerary",
+      "process.step2.description": "We craft a completely customized journey proposal with exclusive experience options.",
+      "process.step3.title": "Seamless Execution",
+      "process.step3.description": "Our global team ensures flawless execution with 24/7 support throughout your journey.",
+
+      // Gallery section
+      "gallery.title": "Gallery of Wonders",
+      "gallery.subtitle": "Moments from our travelers' most extraordinary Voyager experiences.",
+      "gallery.item1.title": "Bali, Indonesia",
+      "gallery.item1.description": "Private Beachfront Estate",
+      "gallery.item2.title": "Paris, France",
+      "gallery.item2.description": "Eiffel Tower Private Dinner",
+      "gallery.item3.title": "New York, USA",
+      "gallery.item3.description": "Penthouse Skyline Views",
+      "gallery.item4.title": "Cape Town, South Africa",
+      "gallery.item4.description": "Helicopter Wine Tour",
+
+      // Quotes section
+      "quotes.title": "What Drives Us",
+      "quotes.quote1": "The world is always within reach.",
+      "quotes.quote2": "No destination is too far.",
+
+      // Newsletter section
+      "newsletter.title": "Begin Your Journey",
+      "newsletter.subtitle": "Join our exclusive mailing list for first access to our most extraordinary travel experiences.",
+      "newsletter.placeholder": "Your email address",
+      "newsletter.button": "Request Consultation",
+
+      // Footer
+      "footer.about": "StepOut Travel is the world's premier luxury travel concierge, crafting extraordinary experiences for discerning clients.",
+      "footer.explore": "Explore",
+      "footer.terms": "Terms and Conditions",
+      "footer.destinations": "Destinations",
+      "footer.experience": "Experience",
+      "footer.testimonials": "Testimonials",
+      "footer.europe": "Europe",
+      "footer.asia": "Asia",
+      "footer.africa": "Africa",
+      "footer.americas": "Americas",
+      "footer.contact": "Contact",
+      "footer.address": "Antwerp, Belgium",
+      "footer.hours": "24/7 Concierge",
+      "footer.rights": "All Rights Reserved."
+    }
+  };
+
+  // Language switching functionality
+  const languageBtns = document.querySelectorAll('.language-btn');
+  let currentLang = 'nl'; // Default language
+
+  // Function to update the language
+  function updateLanguage(lang) {
+    // Update all elements with data-i18n attribute
+    document.querySelectorAll('[data-i18n]').forEach(element => {
+      const key = element.getAttribute('data-i18n');
+      if (translations[lang] && translations[lang][key]) {
+        if (element.tagName === 'INPUT' && element.hasAttribute('placeholder')) {
+          element.setAttribute('placeholder', translations[lang][key]);
+        } else {
+          element.textContent = translations[lang][key];
+        }
+      }
+    });
+
+    // Update active language button
+    languageBtns.forEach(btn => {
+      if (btn.getAttribute('data-lang') === lang) {
+        btn.classList.add('active');
+      } else {
+        btn.classList.remove('active');
+      }
+    });
+
+    // Update HTML lang attribute
+    document.documentElement.setAttribute('lang', lang);
+
+    // Save preference to localStorage
+    localStorage.setItem('preferredLang', lang);
+
+    currentLang = lang;
+  }
+
+  // Add event listeners to language buttons
+  languageBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const lang = btn.getAttribute('data-lang');
+      updateLanguage(lang);
+    });
+  });
+
+  // Check for saved language preference
+  const savedLang = localStorage.getItem('preferredLang');
+  if (savedLang) {
+    updateLanguage(savedLang);
+  }
 
   // Mobile Menu Toggle
   const mobileMenuBtn = document.getElementById('mobileMenuBtn');
